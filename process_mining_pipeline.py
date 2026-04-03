@@ -101,6 +101,37 @@ def contains_pii(text):
         if re.search(p, text): return True
     return False
 
+# --- NEUE DYNAMISCHE FUNKTION FÜR AGENT-TOKEN-MAPPING ---
+def assign_tokens_dynamically(events, target_keyword="Agent"):
+    """
+    Sammelt dynamisch Token-Verbräuche ein und ordnet sie dem zeitlich nächsten Node zu,
+    der das target_keyword (z.B. 'Agent') im Namen trägt. Keine hardcodierten Namen nötig!
+    """
+    agent_events = [e for e in events if target_keyword.lower() in e['activity'].lower()]
+    
+    if not agent_events:
+        return events 
+        
+    for event in events:
+        if event['token_usage'] > 0 and event not in agent_events:
+            best_agent = None
+            min_time_diff = float('inf')
+            event_start = datetime.strptime(event['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
+            
+            for agent in agent_events:
+                agent_start = datetime.strptime(agent['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
+                diff = abs((event_start - agent_start).total_seconds())
+                
+                if diff < min_time_diff:
+                    min_time_diff = diff
+                    best_agent = agent
+            
+            if best_agent:
+                best_agent['token_usage'] += event['token_usage']
+                event['token_usage'] = 0
+                
+    return events
+
 def extract_events(case_id, data_input):
     try:
         g = json.loads(data_input) if isinstance(data_input, str) else data_input
@@ -148,7 +179,9 @@ def extract_events(case_id, data_input):
                     "execution_status": str(status),
                     "error_type": "None" if status == "success" else "Error"
                 })
-        return events
+                
+        # Dynamische Token-Zuweisung anwenden
+        return assign_tokens_dynamically(events, target_keyword="Agent")
     except Exception as e:
         print(f" Fehler Case {case_id}: {e}")
         return []
@@ -159,8 +192,15 @@ def process_overhead(events):
     for i in range(1, len(events)):
         prev_end = datetime.strptime(events[i-1]['end_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
         curr_start = datetime.strptime(events[i]['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
-        events[i]['system_overhead_sec'] = max(0.0, (curr_start - prev_end).total_seconds())
-    if events: events[0]['system_overhead_sec'] = 0.0
+        
+        # TRICK: Mindestens 0.001 Sekunden (1 Millisekunde), damit IMMER Nachkommastellen exportiert werden
+        overhead = max(0.001, (curr_start - prev_end).total_seconds())
+        events[i]['system_overhead_sec'] = round(overhead, 3)
+        
+    if events: 
+        # Auch das allererste Event bekommt 0.001 statt glatt 0.0
+        events[0]['system_overhead_sec'] = 0.001
+        
     return events
 
 def run_pipeline():
@@ -173,7 +213,10 @@ def run_pipeline():
         for _, row in chunk.iterrows():
             all_ev.extend(process_overhead(extract_events(row['id'], row['data'])))
         if all_ev:
-            pd.DataFrame(all_ev).to_sql('process_mining_events', engine, if_exists='replace' if first else 'append', index=False)
+            df = pd.DataFrame(all_ev)
+            # Zwingt Pandas und die Datenbank, diese Spalte als reinen Float zu behandeln
+            df['system_overhead_sec'] = df['system_overhead_sec'].astype(float)
+            df.to_sql('process_mining_events', engine, if_exists='replace' if first else 'append', index=False)
             first = False
     print(f"[{datetime.now().strftime('%H:%M:%S')}] PIPELINE FERTIG.")
 
