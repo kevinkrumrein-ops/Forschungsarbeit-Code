@@ -5,11 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# n8n Core-Blacklist: Diese Keys führen oft zu globalen Daten-Lecks (Trigger-Problem)
-FORBIDDEN_KEYS = {'workflowData', 'sourceOverwrite', 'pairedItem', 'parent', 'context', 'chatHistory'}
-# Globale System-Pointer: Wenn ein Pointer auf diese Indizes zeigt, ist es der Workflow-Root (Gefahr!)
-SYSTEM_INDICES = {'0', '1', '2', '3', '4'}
-
 def get_db_engine():
     user = os.getenv("TARGET_DB_USER")
     pw = os.getenv("TARGET_DB_PASSWORD")
@@ -21,75 +16,125 @@ def format_iso_timestamp(dt):
 
 def get_pointer_val(g, ptr):
     try:
-        idx = int(ptr)
-        if isinstance(g, list): return g[idx] if 0 <= idx < len(g) else None
+        # Nur Ziffern-Strings sind Pointer
+        if isinstance(ptr, str) and ptr.isdigit():
+            idx = int(ptr)
+            if isinstance(g, list): return g[idx] if 0 <= idx < len(g) else None
         return None
     except: return None
 
-def smart_resolve(g, obj, visited=None, depth=0):
+def resolve_pure_payload(g, obj, visited=None, depth=0):
     """
-    Löst Pointer auflösen, bleibt aber im Node-Kontext.
-    Wichtig für korrektes Datenvolumen und PII-Erkennung.
+    Sichere, rekursive Auflösung OHNE Blacklist.
+    Nutzt ein 'visited'-Set und ein 'depth'-Limit, um Endlosschleifen 
+    durch echte Daten (wie z.B. Rechnungsnummern als Strings) zu verhindern.
     """
     if visited is None: visited = set()
     if depth > 20: return "[Max Depth]" 
 
-    if isinstance(obj, (int, str)) and str(obj).isdigit():
-        ptr_str = str(obj)
-        if ptr_str in SYSTEM_INDICES or ptr_str in visited:
+    if isinstance(obj, str) and obj.isdigit():
+        # Sicherheitsgurt: Wenn wir den Pointer schon besucht haben, stoppen
+        if obj in visited: 
             return obj 
-        
-        visited.add(ptr_str)
+            
+        visited.add(obj)
         resolved = get_pointer_val(g, obj)
-        if resolved is None: return obj 
-        return smart_resolve(g, resolved, visited, depth + 1)
-    
+        
+        if resolved is not None:
+            return resolve_pure_payload(g, resolved, visited, depth + 1)
+        return obj
+        
     if isinstance(obj, dict):
-        return {k: smart_resolve(g, v, visited.copy(), depth + 1) 
-                for k, v in obj.items() if k not in FORBIDDEN_KEYS}
-    
+        return {k: resolve_pure_payload(g, v, visited.copy(), depth + 1) for k, v in obj.items()}
+        
     if isinstance(obj, list):
-        return [smart_resolve(g, i, visited.copy(), depth + 1) for i in obj]
-    
+        return [resolve_pure_payload(g, v, visited.copy(), depth + 1) for v in obj]
+        
     return obj
 
-def extract_tokens_targeted(g, obj, visited=None):
+def get_exact_payload(g, data_ptr):
     """
-    Sucht gezielt nach Tokens. Nutzt die chirurgische Logik (erster Treffer),
-    um Doppelzählung (z.B. prompt + total) zu verhindern.
+    Navigiert deterministisch an den System-Pointern vorbei direkt in die Nutzdaten.
     """
-    if visited is None: visited = set()
-    
-    if isinstance(obj, (int, str)) and str(obj).isdigit():
-        ptr_str = str(obj)
-        if ptr_str in visited or int(ptr_str) < 5: return 0
-        visited.add(ptr_str)
-        resolved = get_pointer_val(g, obj)
-        if resolved: return extract_tokens_targeted(g, resolved, visited)
-        return 0
+    data_obj = get_pointer_val(g, data_ptr)
+    if not isinstance(data_obj, dict): return {}
 
-    if isinstance(obj, dict):
-        # Priorität: Wenn 'totalTokens' da ist, nimm es sofort und stoppe für diesen Zweig.
-        # Das verhindert, dass wir promptTokens (520) + totalTokens (520) zu 1040 addieren.
-        for k in ['totalTokens', 'estimatedTokens', 'tokenUsage']:
-            if k in obj:
-                try: return int(obj[k])
-                except: pass
+    # Dynamische Ausgangs-Erkennung (main, ai_languageModel, ai_tool, ai_memory)
+    output_key = next((k for k in data_obj.keys() if k in ['main', 'ai_languageModel', 'ai_tool', 'ai_memory']), None)
+    if not output_key: return {}
+
+    output_branches = get_pointer_val(g, data_obj[output_key])
+    if not isinstance(output_branches, list) or len(output_branches) == 0: return {}
+
+    branch_items = get_pointer_val(g, output_branches[0])
+    if not isinstance(branch_items, list) or len(branch_items) == 0: return {}
+
+    first_item = get_pointer_val(g, branch_items[0])
+    if not isinstance(first_item, dict) or 'json' not in first_item: return {}
+
+    # Wir greifen NUR das 'json'-Objekt und ignorieren 'pairedItem' etc.
+    json_payload = get_pointer_val(g, first_item['json'])
+    if not isinstance(json_payload, dict): return {}
+
+    # Da wir jetzt isoliert in den Nutzdaten sind, lösen wir diese sicher auf:
+    return resolve_pure_payload(g, json_payload)
+
+def get_exact_total_tokens(g, data_ptr):
+    """
+    Folgt deterministisch dem exakten n8n-Pfad zu den Tokens.
+    Korrigiert für die Array-in-Array Struktur von n8n Connections.
+    """
+    # Schritt 1: Node-Daten laden
+    data_obj = get_pointer_val(g, data_ptr)
+    if not isinstance(data_obj, dict): return 0
+
+    # Schritt 2: Ausgang bestimmen (Chat Models nutzen ai_languageModel)
+    output_key = 'ai_languageModel' if 'ai_languageModel' in data_obj else 'main'
+    if output_key not in data_obj: return 0
+
+    # Schritt 3: Array der Ausgänge (Liste aller Äste)
+    output_branches = get_pointer_val(g, data_obj[output_key])
+    if not isinstance(output_branches, list) or len(output_branches) == 0: return 0
+
+    # Schritt 4: Array der Items im ersten Ausgang
+    branch_items = get_pointer_val(g, output_branches[0])
+    if not isinstance(branch_items, list) or len(branch_items) == 0: return 0
+
+    # Schritt 5: Das tatsächliche Item extrahieren
+    first_item = get_pointer_val(g, branch_items[0])
+    if not isinstance(first_item, dict) or 'json' not in first_item: return 0
+
+    # Schritt 6: Den Payload ('json') laden
+    json_payload = get_pointer_val(g, first_item['json'])
+    if not isinstance(json_payload, dict): return 0
+
+    token_usage = None
+    
+    # Pfad A: Der n8n-Pfad, unter dem deine 520 und 875 Tokens zwingend liegen
+    if 'tokenUsageEstimate' in json_payload:
+        token_usage = get_pointer_val(g, json_payload['tokenUsageEstimate'])
         
-        # Fallback: Wenn kein 'total' da ist, suche in Unter-Objekten
-        for k, v in obj.items():
-            if k in FORBIDDEN_KEYS: continue
-            res = extract_tokens_targeted(g, v, visited)
-            if res > 0: return res
-            
-    elif isinstance(obj, list):
-        for item in obj:
-            res = extract_tokens_targeted(g, item, visited)
-            if res > 0: return res
+    # Pfad B: Der LangChain-Standard-Pfad (als Fallback für andere Modelle)
+    elif 'response' in json_payload:
+        response_obj = get_pointer_val(g, json_payload['response'])
+        if isinstance(response_obj, dict) and 'response_metadata' in response_obj:
+            resp_meta = get_pointer_val(g, response_obj['response_metadata'])
+            if isinstance(resp_meta, dict) and 'tokenUsage' in resp_meta:
+                token_usage = resp_meta['tokenUsage']
+                
+    if not token_usage: return 0
+    
+    # Auflösen, falls Token Usage noch ein Pointer-String ist
+    if isinstance(token_usage, str) and token_usage.isdigit():
+        token_usage = get_pointer_val(g, token_usage)
+
+    # Finale Extraktion
+    if isinstance(token_usage, dict) and 'totalTokens' in token_usage:
+        return int(token_usage['totalTokens'])
+
     return 0
 
 def contains_pii(text):
-    """Scannt auf alle 5 für die Masterarbeit relevanten PII-Kategorien."""
     patterns = {
         "email": r"[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,}",
         "iban": r"[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{2}",
@@ -101,15 +146,13 @@ def contains_pii(text):
         if re.search(p, text): return True
     return False
 
-# --- NEUE DYNAMISCHE FUNKTION FÜR AGENT-TOKEN-MAPPING ---
 def assign_tokens_dynamically(events, target_keyword="Agent"):
     """
-    Sammelt dynamisch Token-Verbräuche ein und ordnet sie dem zeitlich nächsten Node zu,
-    der das target_keyword (z.B. 'Agent') im Namen trägt. Keine hardcodierten Namen nötig!
+    Sammelt Token-Verbräuche von LLMs ein und kopiert sie zum zeitlich nächsten Agenten.
+    Die Original-Tokens bei den LLM-Nodes bleiben für die Detail-Analyse in Celonis erhalten.
     """
     agent_events = [e for e in events if target_keyword.lower() in e['activity'].lower()]
-    
-    if not agent_events:
+    if not agent_events: 
         return events 
         
     for event in events:
@@ -127,15 +170,15 @@ def assign_tokens_dynamically(events, target_keyword="Agent"):
                     best_agent = agent
             
             if best_agent:
+                # Addiert die Tokens auf den Agenten
                 best_agent['token_usage'] += event['token_usage']
-                event['token_usage'] = 0
-                
+
     return events
 
 def extract_events(case_id, data_input):
     try:
         g = json.loads(data_input) if isinstance(data_input, str) else data_input
-        root = get_pointer_val(g, 2)
+        root = get_pointer_val(g, "2")
         mapping = get_pointer_val(g, root.get('runData')) or {}
         events = []
         
@@ -145,25 +188,27 @@ def extract_events(case_id, data_input):
                 
             for meta_ptr in run_list:
                 m = get_pointer_val(g, meta_ptr) or {}
-                status = smart_resolve(g, m.get('executionStatus'))
+                
+                # 1. Status deterministisch auflösen (Kein smart_resolve mehr nötig)
+                status_ptr = m.get('executionStatus')
+                if isinstance(status_ptr, str) and status_ptr.isdigit():
+                    status = get_pointer_val(g, status_ptr)
+                else:
+                    status = status_ptr
+                    
                 start_dt = datetime.fromtimestamp(m.get('startTime', 0) / 1000.0)
                 dur_ms = m.get('executionTime', 0)
                 
-                # --- TOKEN FIX: Gemeinsames visited-Set verhindert Doppelzählung ---
-                visited_for_node = set()
-                token_total = extract_tokens_targeted(g, m.get('metadata'), visited_for_node)
-                if token_total == 0:
-                    token_total = extract_tokens_targeted(g, m.get('data'), visited_for_node)
+                # 2. Deterministisches Path-Tracing für Tokens
+                token_total = get_exact_total_tokens(g, m.get('data'))
                 
-                # --- DATENVOLUMEN & PII (Vollständige Pointersuche unverändert) ---
-                resolved_payload = smart_resolve(g, m.get('data'))
+                # 3. Payload deterministisch auflösen (Keine Blacklist mehr nötig)
+                resolved_payload = get_exact_payload(g, m.get('data'))
                 payload_json = json.dumps(resolved_payload, ensure_ascii=False)
                 
-                # Suchen nach fileSize im aufgelösten Baum
                 file_size_match = re.search(r'"(?:fileSize|size)":\s*(\d+)', payload_json)
                 volume = int(file_size_match.group(1)) if file_size_match else len(payload_json)
                 
-                # KI-Gewichtung
                 if token_total > 0 and volume < 1000:
                     volume = max(volume, token_total * 4)
 
@@ -180,7 +225,6 @@ def extract_events(case_id, data_input):
                     "error_type": "None" if status == "success" else "Error"
                 })
                 
-        # Dynamische Token-Zuweisung anwenden
         return assign_tokens_dynamically(events, target_keyword="Agent")
     except Exception as e:
         print(f" Fehler Case {case_id}: {e}")
@@ -192,15 +236,9 @@ def process_overhead(events):
     for i in range(1, len(events)):
         prev_end = datetime.strptime(events[i-1]['end_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
         curr_start = datetime.strptime(events[i]['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
-        
-        # TRICK: Mindestens 0.001 Sekunden (1 Millisekunde), damit IMMER Nachkommastellen exportiert werden
         overhead = max(0.001, (curr_start - prev_end).total_seconds())
         events[i]['system_overhead_sec'] = round(overhead, 3)
-        
-    if events: 
-        # Auch das allererste Event bekommt 0.001 statt glatt 0.0
-        events[0]['system_overhead_sec'] = 0.001
-        
+    if events: events[0]['system_overhead_sec'] = 0.001
     return events
 
 def run_pipeline():
@@ -214,7 +252,6 @@ def run_pipeline():
             all_ev.extend(process_overhead(extract_events(row['id'], row['data'])))
         if all_ev:
             df = pd.DataFrame(all_ev)
-            # Zwingt Pandas und die Datenbank, diese Spalte als reinen Float zu behandeln
             df['system_overhead_sec'] = df['system_overhead_sec'].astype(float)
             df.to_sql('process_mining_events', engine, if_exists='replace' if first else 'append', index=False)
             first = False
