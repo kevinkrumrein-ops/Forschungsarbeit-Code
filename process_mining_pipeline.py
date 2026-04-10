@@ -33,7 +33,7 @@ def resolve_pure_payload(g, obj, visited=None, depth=0):
     if depth > 20: return "[Max Depth]" 
 
     if isinstance(obj, str) and obj.isdigit():
-        # Sicherheitsgurt: Wenn wir den Pointer schon besucht haben, stoppen
+    
         if obj in visited: 
             return obj 
             
