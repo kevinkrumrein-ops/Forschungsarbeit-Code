@@ -9,14 +9,15 @@ def get_db_engine():
     user = os.getenv("TARGET_DB_USER")
     pw = os.getenv("TARGET_DB_PASSWORD")
     db = os.getenv("TARGET_DB_NAME")
-    return create_engine(f"postgresql://{user}:{pw}@127.0.0.1:5434/{db}")
+    host = os.getenv("TARGET_DB_HOST", "127.0.0.1")
+    port = os.getenv("TARGET_DB_PORT", "5434")
+    return create_engine(f"postgresql://{user}:{pw}@{host}:{port}/{db}")
 
 def format_iso_timestamp(dt):
     return dt.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
 def get_pointer_val(g, ptr):
     try:
-        # Nur Ziffern-Strings sind Pointer
         if isinstance(ptr, str) and ptr.isdigit():
             idx = int(ptr)
             if isinstance(g, list): return g[idx] if 0 <= idx < len(g) else None
@@ -24,97 +25,53 @@ def get_pointer_val(g, ptr):
     except: return None
 
 def resolve_pure_payload(g, obj, visited=None, depth=0):
-    """
-    Sichere, rekursive Auflösung OHNE Blacklist.
-    Nutzt ein 'visited'-Set und ein 'depth'-Limit, um Endlosschleifen 
-    durch echte Daten (wie z.B. Rechnungsnummern als Strings) zu verhindern.
-    """
     if visited is None: visited = set()
     if depth > 20: return "[Max Depth]" 
-
     if isinstance(obj, str) and obj.isdigit():
-    
-        if obj in visited: 
-            return obj 
-            
+        if obj in visited: return obj 
         visited.add(obj)
         resolved = get_pointer_val(g, obj)
-        
         if resolved is not None:
             return resolve_pure_payload(g, resolved, visited, depth + 1)
         return obj
-        
     if isinstance(obj, dict):
         return {k: resolve_pure_payload(g, v, visited.copy(), depth + 1) for k, v in obj.items()}
-        
     if isinstance(obj, list):
         return [resolve_pure_payload(g, v, visited.copy(), depth + 1) for v in obj]
-        
     return obj
 
 def get_exact_payload(g, data_ptr):
-    """
-    Navigiert deterministisch an den System-Pointern vorbei direkt in die Nutzdaten.
-    """
     data_obj = get_pointer_val(g, data_ptr)
     if not isinstance(data_obj, dict): return {}
-
-    # Dynamische Ausgangs-Erkennung (main, ai_languageModel, ai_tool, ai_memory)
     output_key = next((k for k in data_obj.keys() if k in ['main', 'ai_languageModel', 'ai_tool', 'ai_memory']), None)
     if not output_key: return {}
-
     output_branches = get_pointer_val(g, data_obj[output_key])
     if not isinstance(output_branches, list) or len(output_branches) == 0: return {}
-
     branch_items = get_pointer_val(g, output_branches[0])
     if not isinstance(branch_items, list) or len(branch_items) == 0: return {}
-
     first_item = get_pointer_val(g, branch_items[0])
     if not isinstance(first_item, dict) or 'json' not in first_item: return {}
-
-    # Wir greifen NUR das 'json'-Objekt und ignorieren 'pairedItem' etc.
     json_payload = get_pointer_val(g, first_item['json'])
     if not isinstance(json_payload, dict): return {}
-
-    # Da wir jetzt isoliert in den Nutzdaten sind, lösen wir diese sicher auf:
     return resolve_pure_payload(g, json_payload)
 
 def get_exact_total_tokens(g, data_ptr):
-    """
-    Folgt deterministisch dem exakten n8n-Pfad zu den Tokens.
-    Korrigiert für die Array-in-Array Struktur von n8n Connections.
-    """
-    # Schritt 1: Node-Daten laden
     data_obj = get_pointer_val(g, data_ptr)
     if not isinstance(data_obj, dict): return 0
-
-    # Schritt 2: Ausgang bestimmen (Chat Models nutzen ai_languageModel)
     output_key = 'ai_languageModel' if 'ai_languageModel' in data_obj else 'main'
     if output_key not in data_obj: return 0
-
-    # Schritt 3: Array der Ausgänge (Liste aller Äste)
     output_branches = get_pointer_val(g, data_obj[output_key])
     if not isinstance(output_branches, list) or len(output_branches) == 0: return 0
-
-    # Schritt 4: Array der Items im ersten Ausgang
     branch_items = get_pointer_val(g, output_branches[0])
     if not isinstance(branch_items, list) or len(branch_items) == 0: return 0
-
-    # Schritt 5: Das tatsächliche Item extrahieren
     first_item = get_pointer_val(g, branch_items[0])
     if not isinstance(first_item, dict) or 'json' not in first_item: return 0
-
-    # Schritt 6: Den Payload ('json') laden
     json_payload = get_pointer_val(g, first_item['json'])
     if not isinstance(json_payload, dict): return 0
-
-    token_usage = None
     
-    # Pfad A: Der n8n-Pfad, unter dem deine 520 und 875 Tokens zwingend liegen
+    token_usage = None
     if 'tokenUsageEstimate' in json_payload:
         token_usage = get_pointer_val(g, json_payload['tokenUsageEstimate'])
-        
-    # Pfad B: Der LangChain-Standard-Pfad (als Fallback für andere Modelle)
     elif 'response' in json_payload:
         response_obj = get_pointer_val(g, json_payload['response'])
         if isinstance(response_obj, dict) and 'response_metadata' in response_obj:
@@ -123,15 +80,10 @@ def get_exact_total_tokens(g, data_ptr):
                 token_usage = resp_meta['tokenUsage']
                 
     if not token_usage: return 0
-    
-    # Auflösen, falls Token Usage noch ein Pointer-String ist
     if isinstance(token_usage, str) and token_usage.isdigit():
         token_usage = get_pointer_val(g, token_usage)
-
-    # Finale Extraktion
     if isinstance(token_usage, dict) and 'totalTokens' in token_usage:
         return int(token_usage['totalTokens'])
-
     return 0
 
 def contains_pii(text):
@@ -146,35 +98,6 @@ def contains_pii(text):
         if re.search(p, text): return True
     return False
 
-def assign_tokens_dynamically(events, target_keyword="Agent"):
-    """
-    Sammelt Token-Verbräuche von LLMs ein und kopiert sie zum zeitlich nächsten Agenten.
-    Die Original-Tokens bei den LLM-Nodes bleiben für die Detail-Analyse in Celonis erhalten.
-    """
-    agent_events = [e for e in events if target_keyword.lower() in e['activity'].lower()]
-    if not agent_events: 
-        return events 
-        
-    for event in events:
-        if event['token_usage'] > 0 and event not in agent_events:
-            best_agent = None
-            min_time_diff = float('inf')
-            event_start = datetime.strptime(event['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
-            
-            for agent in agent_events:
-                agent_start = datetime.strptime(agent['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
-                diff = abs((event_start - agent_start).total_seconds())
-                
-                if diff < min_time_diff:
-                    min_time_diff = diff
-                    best_agent = agent
-            
-            if best_agent:
-                # Addiert die Tokens auf den Agenten
-                best_agent['token_usage'] += event['token_usage']
-
-    return events
-
 def extract_events(case_id, data_input):
     try:
         g = json.loads(data_input) if isinstance(data_input, str) else data_input
@@ -185,30 +108,17 @@ def extract_events(case_id, data_input):
         for activity, run_ptr in mapping.items():
             run_list = get_pointer_val(g, run_ptr) or []
             if not isinstance(run_list, list): run_list = [run_list]
-                
             for meta_ptr in run_list:
                 m = get_pointer_val(g, meta_ptr) or {}
-                
-                # 1. Status deterministisch auflösen (Kein smart_resolve mehr nötig)
                 status_ptr = m.get('executionStatus')
-                if isinstance(status_ptr, str) and status_ptr.isdigit():
-                    status = get_pointer_val(g, status_ptr)
-                else:
-                    status = status_ptr
-                    
+                status = get_pointer_val(g, status_ptr) if (isinstance(status_ptr, str) and status_ptr.isdigit()) else status_ptr
                 start_dt = datetime.fromtimestamp(m.get('startTime', 0) / 1000.0)
                 dur_ms = m.get('executionTime', 0)
-                
-                # 2. Deterministisches Path-Tracing für Tokens
                 token_total = get_exact_total_tokens(g, m.get('data'))
-                
-                # 3. Payload deterministisch auflösen (Keine Blacklist mehr nötig)
                 resolved_payload = get_exact_payload(g, m.get('data'))
                 payload_json = json.dumps(resolved_payload, ensure_ascii=False)
-                
                 file_size_match = re.search(r'"(?:fileSize|size)":\s*(\d+)', payload_json)
                 volume = int(file_size_match.group(1)) if file_size_match else len(payload_json)
-                
                 if token_total > 0 and volume < 1000:
                     volume = max(volume, token_total * 4)
 
@@ -224,8 +134,7 @@ def extract_events(case_id, data_input):
                     "execution_status": str(status),
                     "error_type": "None" if status == "success" else "Error"
                 })
-                
-        return assign_tokens_dynamically(events, target_keyword="Agent")
+        return events
     except Exception as e:
         print(f" Fehler Case {case_id}: {e}")
         return []
@@ -244,7 +153,7 @@ def process_overhead(events):
 def run_pipeline():
     engine = get_db_engine()
     query = 'SELECT e.id, d.data FROM raw_execution_entity e JOIN raw_execution_data d ON e.id = d."executionId"'
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] STARTE PRÄZISIONS-PIPELINE")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] STARTE PRÄZISIONS-PIPELINE (Token Workarounds entfernt)")
     first = True
     for chunk in pd.read_sql(query, engine, chunksize=100):
         all_ev = []

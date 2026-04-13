@@ -32,9 +32,6 @@ def export_logs():
     df['end_timestamp'] = pd.to_datetime(df['end_timestamp'])
     df['timestamp'] = df['end_timestamp']
 
-    # Agent-Korrektur: "AI Agent" im activity-Namen -> token_usage auf 0 setzen
-    df.loc[df['activity'].str.contains("AI Agent", na=False), 'token_usage'] = 0
-
     # Sortierung nach case_id und timestamp
     df = df.sort_values(by=['case_id', 'timestamp'])
 
