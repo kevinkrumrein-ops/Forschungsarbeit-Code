@@ -4,41 +4,47 @@ import os
 import time
 
 def run_script(script_name):
-    """Führt ein Python-Skript aus und gibt True zurück, wenn es erfolgreich war."""
-    print(f"[{time.strftime('%H:%M:%S')}] Starte: {script_name}...")
     
-    # Nutzt den aktuellen Python-Interpreter, um das Skript auszuführen
+    print(f"[{time.strftime('%H:%M:%S')}] Launching phase: {script_name}...")
+    
     result = subprocess.run([sys.executable, script_name], capture_output=False, text=True)
     
     if result.returncode == 0:
-        print(f"[{time.strftime('%H:%M:%S')}] {script_name} erfolgreich abgeschlossen.\n")
+        print(f"[{time.strftime('%H:%M:%S')}] Phase {script_name} completed successfully.\n")
         return True
     else:
-        print(f"[{time.strftime('%H:%M:%S')}] FEHLER: {script_name} ist mit Exit-Code {result.returncode} fehlgeschlagen.\n")
+        print(f"[{time.strftime('%H:%M:%S')}] ERROR: {script_name} failed with exit code {result.returncode}.\n")
         return False
 
 def main():
-    # Sicherstellen, dass wir im Verzeichnis des Skripts arbeiten
+    """
+    Main orchestration loop. Ensures directory integrity and manages the 
+    sequential ETL (Extract, Transform, Load) execution chain.
+    """
     script_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_dir)
 
     print("="*50)
-    print("N8N PROCESS MINING: VOLLSTÄNDIGE EXTRAKTION")
+    print("N8N PROCESS MINING: FULL ETL EXTRACTION SEQUENCE")
     print("="*50)
 
-    # Schritt 1: ETL Pipeline (Daten aus n8n extrahieren und in DB speichern)
-    if run_script("process_mining_pipeline.py"):
+    # Phase 1: Data Acquisition (Extract)
+    if run_script("01_extract_data_collector.py"):
         
-        # Schritt 2: CSV Export (Daten aus DB in CSV exportieren)
-        if run_script("export_event_logs.py"):
-            print("="*50)
-            print("PROZESS ERFOLGREICH BEENDET.")
-            print(f"Die Datei 'Event_Logs.csv' liegt bereit in: {script_dir}")
-            print("="*50)
+        # Phase 2: Logical Processing (Transform)
+        if run_script("02_transform_process_pipeline.py"):
+            
+            # Phase 3: Result Persistence (Load)
+            if run_script("03_load_event_exporter.py"):
+                print("="*50)
+                print("ETL PIPELINE SUCCESSFUL: Event log is ready for analysis.")
+                print("="*50)
+            else:
+                print("ABORT: Phase 03_load failed.")
         else:
-            print("Abbruch: Export fehlgeschlagen.")
+            print("ABORT: Phase 02_transform failed.")
     else:
-        print("Abbruch: Pipeline fehlgeschlagen. Export wurde nicht gestartet.")
+        print("ABORT: Phase 01_extract failed.")
 
 if __name__ == "__main__":
     main()
