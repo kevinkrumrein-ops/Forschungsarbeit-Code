@@ -98,6 +98,31 @@ def contains_pii(text):
         if re.search(p, text): return True
     return False
 
+def resolve_simultaneity(events):
+    """
+    Leverage microsecond precision for causal ordering before truncating 
+    to millisecond resolution for process mining compatibility.
+    """
+    if not events: return []
+    
+    # Sort by full microsecond precision to establish clear causal order
+    events.sort(key=lambda x: x['start_timestamp'])
+    
+    for i in range(1, len(events)):
+        prev_event = events[i-1]
+        curr_event = events[i]
+        
+        # Check if current start millisecond matches previous end millisecond
+        prev_end_ms = format_iso_timestamp(prev_event['end_timestamp'])
+        curr_start_ms = format_iso_timestamp(curr_event['start_timestamp'])
+        
+        if prev_end_ms == curr_start_ms:
+            # Add 1ms to ensure visibility of the causal link after truncation
+            curr_event['start_timestamp'] += timedelta(milliseconds=1)
+            curr_event['end_timestamp'] += timedelta(milliseconds=1)
+            
+    return events
+
 def extract_events(case_id, data_input):
     try:
         g = json.loads(data_input) if isinstance(data_input, str) else data_input
@@ -112,21 +137,26 @@ def extract_events(case_id, data_input):
                 m = get_pointer_val(g, meta_ptr) or {}
                 status_ptr = m.get('executionStatus')
                 status = get_pointer_val(g, status_ptr) if (isinstance(status_ptr, str) and status_ptr.isdigit()) else status_ptr
+                
+                # Maintain full datetime objects for causal ordering
                 start_dt = datetime.fromtimestamp(m.get('startTime', 0) / 1000.0)
                 dur_ms = m.get('executionTime', 0)
+                end_dt = start_dt + timedelta(milliseconds=dur_ms)
+                
                 token_total = get_exact_total_tokens(g, m.get('data'))
                 resolved_payload = get_exact_payload(g, m.get('data'))
                 payload_json = json.dumps(resolved_payload, ensure_ascii=False)
                 file_size_match = re.search(r'"(?:fileSize|size)":\s*(\d+)', payload_json)
                 volume = int(file_size_match.group(1)) if file_size_match else len(payload_json)
+                
                 if token_total > 0 and volume < 1000:
                     volume = max(volume, token_total * 4)
 
                 events.append({
                     "case_id": case_id,
                     "activity": activity,
-                    "start_timestamp": format_iso_timestamp(start_dt),
-                    "end_timestamp": format_iso_timestamp(start_dt + timedelta(milliseconds=dur_ms)),
+                    "start_timestamp": start_dt,
+                    "end_timestamp": end_dt,
                     "execution_time_sec": dur_ms / 1000.0,
                     "token_usage": token_total,
                     "data_volume_bytes": volume,
@@ -140,11 +170,12 @@ def extract_events(case_id, data_input):
         return []
 
 def process_overhead(events):
+    """Calculates system overhead between events using datetime objects."""
     if not events: return []
-    events.sort(key=lambda x: x['start_timestamp'])
+    # Already sorted by resolve_simultaneity
     for i in range(1, len(events)):
-        prev_end = datetime.strptime(events[i-1]['end_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
-        curr_start = datetime.strptime(events[i]['start_timestamp'], '%Y-%m-%d %H:%M:%S.%f')
+        prev_end = events[i-1]['end_timestamp']
+        curr_start = events[i]['start_timestamp']
         overhead = max(0.001, (curr_start - prev_end).total_seconds())
         events[i]['system_overhead_sec'] = round(overhead, 3)
     if events: events[0]['system_overhead_sec'] = 0.001
@@ -153,12 +184,25 @@ def process_overhead(events):
 def run_pipeline():
     engine = get_db_engine()
     query = 'SELECT e.id, d.data FROM raw_execution_entity e JOIN raw_execution_data d ON e.id = d."executionId"'
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] STARTE PRÄZISIONS-PIPELINE (Token Workarounds entfernt)")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] STARTE KAUSAL-PIPELINE (Mikrosekunden-Präzision)")
     first = True
     for chunk in pd.read_sql(query, engine, chunksize=100):
         all_ev = []
         for _, row in chunk.iterrows():
-            all_ev.extend(process_overhead(extract_events(row['id'], row['data'])))
+            # 1. Extract raw datetimes
+            case_events = extract_events(row['id'], row['data'])
+            # 2. Resolve simultaneity based on microsecond causal order
+            case_events = resolve_simultaneity(case_events)
+            # 3. Process overhead
+            case_events = process_overhead(case_events)
+            
+            # 4. Final Formatting: Convert to ISO strings (ms resolution) before storage
+            for ev in case_events:
+                ev['start_timestamp'] = format_iso_timestamp(ev['start_timestamp'])
+                ev['end_timestamp'] = format_iso_timestamp(ev['end_timestamp'])
+            
+            all_ev.extend(case_events)
+            
         if all_ev:
             df = pd.DataFrame(all_ev)
             df['system_overhead_sec'] = df['system_overhead_sec'].astype(float)
