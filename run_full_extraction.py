@@ -2,18 +2,19 @@ import subprocess
 import sys
 import os
 import time
+from datetime import datetime
 
 def run_script(script_name):
-    
-    print(f"[{time.strftime('%H:%M:%S')}] Launching phase: {script_name}...")
-    
+    """
+    Executes a sub-process using the current Python interpreter.
+    Silent mode: Logic relies on the sub-scripts' internal professional logging.
+    """
     result = subprocess.run([sys.executable, script_name], capture_output=False, text=True)
     
     if result.returncode == 0:
-        print(f"[{time.strftime('%H:%M:%S')}] Phase {script_name} completed successfully.\n")
         return True
     else:
-        print(f"[{time.strftime('%H:%M:%S')}] ERROR: {script_name} failed with exit code {result.returncode}.\n")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [ORCHESTRATOR] [ERROR] Phase {script_name} failed (Exit Code: {result.returncode})")
         return False
 
 def main():
@@ -24,9 +25,9 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_dir)
 
-    print("="*50)
+    print("="*70)
     print("N8N PROCESS MINING: FULL ETL EXTRACTION SEQUENCE")
-    print("="*50)
+    print("="*70)
 
     # Phase 1: Data Acquisition (Extract)
     if run_script("01_extract_data_collector.py"):
@@ -36,15 +37,15 @@ def main():
             
             # Phase 3: Result Persistence (Load)
             if run_script("03_load_event_exporter.py"):
-                print("="*50)
-                print("ETL PIPELINE SUCCESSFUL: Event log is ready for analysis.")
-                print("="*50)
+                print("\n" + "="*70)
+                print("ETL PIPELINE SUCCESSFUL | READY FOR ANALYSIS")
+                print("="*70)
             else:
-                print("ABORT: Phase 03_load failed.")
+                print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 03_load failed.")
         else:
-            print("ABORT: Phase 02_transform failed.")
+            print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 02_transform failed.")
     else:
-        print("ABORT: Phase 01_extract failed.")
+        print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 01_extract failed.")
 
 if __name__ == "__main__":
     main()

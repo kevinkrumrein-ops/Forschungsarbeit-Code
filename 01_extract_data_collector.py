@@ -3,6 +3,7 @@ import pandas as pd
 import json
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Initialize environment variables
 load_dotenv()
@@ -35,9 +36,9 @@ def run_el():
 
         chunk_size = 5000 
 
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-01] [EXTRACT]   Launching data collection...")
+
         for src_table, tgt_table in tables.items():
-            print(f"Initiating transfer: {src_table} -> {tgt_table}...")
-            
             first_chunk = True
             total_rows = 0
             
@@ -55,12 +56,14 @@ def run_el():
                 
                 total_rows += len(df)
                 first_chunk = False
-                print(f"  Status: {total_rows} rows processed")
 
-            print(f"Completion: {total_rows} rows successfully synchronized.\n")
+            # Log progress for each completed table
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-01] [PROGRESS]  Transferring '{src_table}' -> {total_rows} rows.")
+
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-01] [SUCCESS]   Extraction completed.")
 
     except Exception as e:
-        print(f"CRITICAL ETL FAILURE: {str(e)}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-01] [ERROR]     ETL FAILURE: {str(e)}")
 
 if __name__ == "__main__":
     run_el()

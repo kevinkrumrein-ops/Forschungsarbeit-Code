@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Initialize environment configuration
 load_dotenv()
@@ -23,6 +24,8 @@ def export_logs():
     Fetches processed event data from PostgreSQL and exports it to a standardized CSV.
     Relies on pre-processed logical ordering from the transformation pipeline.
     """
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [LOAD]      Launching event exporter...")
+    
     # Initialize connection to the target analytics database
     engine = get_engine("TARGET")
     
@@ -31,7 +34,7 @@ def export_logs():
     df = pd.read_sql(query, engine)
 
     if df.empty:
-        print("Export failed: No data found in 'process_mining_events'.")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [ERROR]     Export failed: No data found in 'process_mining_events'.")
         return
 
     # Standardize timestamp format and select end-point as the primary reference
@@ -54,10 +57,10 @@ def export_logs():
     output_file = 'Event_Logs.csv'
     df_export.to_csv(output_file, index=False, encoding='utf-8', sep=',')
 
-    print(f"Success: {len(df_export)} events saved to '{output_file}'.")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [SUCCESS]   Exported {len(df_export)} events to '{output_file}'.")
 
 if __name__ == "__main__":
     try:
         export_logs()
     except Exception as e:
-        print(f"CRITICAL ERROR during CSV export: {e}")
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [ERROR]     CRITICAL ERROR during CSV export: {e}")
