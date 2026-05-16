@@ -140,27 +140,23 @@ def contains_pii(text):
     return False
 
 def resolve_simultaneity(events):
-    """
-    Fixes causal order by leveraging microsecond precision before truncating to ms.
-    If events share the same ms-timestamp, a 1ms offset is applied to preserve sequence.
-    """
+    """Ensures strict sequential causality by shifting overlapping events."""
     if not events: return []
     
-    # Initial sort using full source precision
+    # Established intended logical order
     events.sort(key=lambda x: x['start_timestamp'])
     
     for i in range(1, len(events)):
-        prev_event = events[i-1]
-        curr_event = events[i]
+        prev_end = events[i-1]['end_timestamp']
+        curr_start = events[i]['start_timestamp']
         
-        # Compare ms-resolution strings to detect collisions after truncation
-        prev_end_ms = format_iso_timestamp(prev_event['end_timestamp'])
-        curr_start_ms = format_iso_timestamp(curr_event['start_timestamp'])
-        
-        if prev_end_ms == curr_start_ms:
-            # Shift current event forward to ensure sequential visibility in mining tools
-            curr_event['start_timestamp'] += timedelta(milliseconds=1)
-            curr_event['end_timestamp'] += timedelta(milliseconds=1)
+        # Check for any temporal overlap or simultaneous timing
+        if curr_start <= prev_end:
+            # Shift current event to start exactly 1ms after the previous one ends
+            shift = (prev_end - curr_start) + timedelta(milliseconds=1)
+            
+            events[i]['start_timestamp'] += shift
+            events[i]['end_timestamp'] += shift
             
     return events
 
@@ -184,7 +180,7 @@ def extract_events(case_id, data_input):
                 status_ptr = m.get('executionStatus')
                 status = get_pointer_val(g, status_ptr) if (isinstance(status_ptr, str) and status_ptr.isdigit()) else status_ptr
                 
-                # timestamps are kept as datetime objects for internal calculations
+                # Timestamps are kept as datetime objects for internal calculations
                 start_dt = datetime.fromtimestamp(m.get('startTime', 0) / 1000.0)
                 dur_ms = m.get('executionTime', 0)
                 end_dt = start_dt + timedelta(milliseconds=dur_ms)

@@ -29,20 +29,15 @@ def export_logs():
     # Initialize connection to the target analytics database
     engine = get_engine("TARGET")
     
-    # Execute SQL query and load results into a pandas DataFrame
-    query = "SELECT * FROM process_mining_events"
+    query = "SELECT * FROM process_mining_events ORDER BY case_id, end_timestamp"
     df = pd.read_sql(query, engine)
 
     if df.empty:
         print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [ERROR]     Export failed: No data found in 'process_mining_events'.")
         return
 
-    # Standardize timestamp format and select end-point as the primary reference
-    df['end_timestamp'] = pd.to_datetime(df['end_timestamp'])
-    df['timestamp'] = df['end_timestamp']
-
-    # Maintain chronological order based on Case ID and logical sequence
-    df = df.sort_values(by=['case_id', 'timestamp'])
+    # Standardize timestamp format and select end-point as the primary reference (Milliseconds)
+    df['timestamp'] = pd.to_datetime(df['end_timestamp'])
 
     # Column selection mapping the database schema to the final event log structure
     target_columns = [
@@ -53,8 +48,10 @@ def export_logs():
     
     df_export = df[target_columns]
 
-    # Export to CSV using UTF-8 encoding for cross-platform compatibility
-    output_file = 'Event_Logs.csv'
+    # Dynamic export path configuration via environment variables
+    output_file = os.getenv("EXPORT_PATH", "Event_Logs.csv")
+    
+    # Export to CSV using UTF-8 encoding and enforcing a strict datetime format 
     df_export.to_csv(output_file, index=False, encoding='utf-8', sep=',')
 
     print(f"[{datetime.now().strftime('%H:%M:%S')}] [PHASE-03] [SUCCESS]   Exported {len(df_export)} events to '{output_file}'.")
