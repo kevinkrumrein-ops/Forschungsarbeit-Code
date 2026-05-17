@@ -1,51 +1,43 @@
-import subprocess
-import sys
-import os
-import time
-from datetime import datetime
+"""
+Module 00: ETL Pipeline Orchestrator
+------------------------------------
+Sequentially orchestrates the execution of the n8n Process Mining ETL pipeline.
+"""
 
-def run_script(script_name):
-    """
-    Executes a sub-process using the current Python interpreter.
-    Silent mode: Logic relies on the sub-scripts' internal professional logging.
-    """
-    result = subprocess.run([sys.executable, script_name], capture_output=False, text=True)
-    
-    if result.returncode == 0:
-        return True
-    else:
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] [ORCHESTRATOR] [ERROR] Phase {script_name} failed (Exit Code: {result.returncode})")
-        return False
+import os
+import sys
+import subprocess
+import logging
+
+# Configure clean, lightweight console logging
+logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
 
 def main():
-    """
-    Main orchestration loop. Ensures directory integrity and manages the 
-    sequential ETL (Extract, Transform, Load) execution chain.
-    """
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    os.chdir(script_dir)
+    # Ensure execution context matches the script's native directory to avoid path conflicts
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    print("="*70)
-    print("N8N PROCESS MINING: FULL ETL EXTRACTION SEQUENCE")
-    print("="*70)
+    # Sequential pipeline definition (Data-driven architecture)
+    pipeline_scripts = [
+        "01_extract_data_collector.py",
+        "02_transform_process_pipeline.py",
+        "03_load_event_exporter.py",
+        "04_push_to_celonis.py"
+    ]
 
-    # Phase 1: Data Acquisition (Extract)
-    if run_script("01_extract_data_collector.py"):
+    logging.info("=== STARTING ETL PIPELINE ===")
+
+    for script in pipeline_scripts:
+        logging.info(f"Executing: {script}")
         
-        # Phase 2: Logical Processing (Transform)
-        if run_script("02_transform_process_pipeline.py"):
-            
-            # Phase 3: Result Persistence (Load)
-            if run_script("03_load_event_exporter.py"):
-                print("\n" + "="*70)
-                print("ETL PIPELINE SUCCESSFUL | READY FOR ANALYSIS")
-                print("="*70)
-            else:
-                print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 03_load failed.")
-        else:
-            print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 02_transform failed.")
-    else:
-        print(f"\n[{datetime.now().strftime('%H:%M:%S')}] [ABORT] Phase 01_extract failed.")
+        # Execute sub-process and stream its logs directly to stdout
+        result = subprocess.run([sys.executable, script])
+        
+        # Fail-Fast mechanism: Immediately abort the entire chain if a phase fails
+        if result.returncode != 0:
+            logging.error(f"PIPELINE ABORTED: {script} failed (Exit Code: {result.returncode})")
+            sys.exit(1)
+
+    logging.info("=== PIPELINE SUCCESSFUL | DATA IS LIVE IN CELONIS ===")
 
 if __name__ == "__main__":
     main()

@@ -1,270 +1,137 @@
-case_id,activity,timestamp,execution_time_sec,token_usage,data_volume_bytes,pii_detected,execution_status,error_type,system_overhead_sec
-420,New Invoice Trigger,2026-04-06 16:53:33.324,0.513,0,5024,True,success,None,0.001
-420,Simple Memory,2026-04-06 16:53:33.333,0.002,0,52,False,success,None,0.007
-420,OpenAI Chat Model 1,2026-04-06 16:53:36.765,3.42,514,2056,False,success,None,0.012
-420,Table & Data Extractor,2026-04-06 16:53:37.758,0.99,0,136,True,success,None,0.003
-420,AI Agent: Data Ingestion Specialist,2026-04-06 16:53:48.354,10.595,0,1163,True,success,None,0.001
-420,Simple Memory,2026-04-06 16:53:48.356,0.001,0,52,False,success,None,0.001
-420,OpenAI Chat Model 1,2026-04-06 16:53:58.930,10.573,1012,1287,True,success,None,0.001
-420,Parse AI Classification,2026-04-06 16:53:58.956,0.025,0,550,True,success,None,0.001
-420,Extraction Successful?,2026-04-06 16:53:58.959,0.002,0,2,False,success,None,0.001
-420,Simple Memory1,2026-04-06 16:53:58.962,0.002,0,3038,True,success,None,0.001
-420,OpenAI Chat Model 2,2026-04-06 16:54:01.119,2.156,938,3752,False,success,None,0.001
-420,SerpAPI,2026-04-06 16:54:02.380,1.26,0,161,False,success,None,0.001
-420,Calculator,2026-04-06 16:54:02.382,0.001,0,21,False,success,None,0.001
-420,AI Agent: Business Intelligence Auditor,2026-04-06 16:54:04.988,2.605,0,457,True,success,None,0.001
-420,Simple Memory1,2026-04-06 16:54:04.989,0.0,0,3038,True,success,None,0.001
-420,OpenAI Chat Model 2,2026-04-06 16:54:07.572,2.582,1179,4716,True,success,None,0.001
-420,Convert to XML,2026-04-06 16:54:07.574,0.001,0,560,True,success,None,0.001
-420,Format XML Output,2026-04-06 16:54:07.577,0.002,0,1151,True,success,None,0.001
-420,Needs Approval?,2026-04-06 16:54:07.580,0.002,0,2,False,success,None,0.001
-420,Confirmation Email,2026-04-06 16:54:08.122,0.541,0,99,True,success,None,0.001
-420,Move File Archiv_Automatisch,2026-04-06 16:54:09.330,1.207,0,118,False,success,None,0.001
-420,Archive to Google Sheets (Automatisch),2026-04-06 16:54:11.807,2.476,0,36,False,success,None,0.001
-421,When Executed by Another Workflow,2026-04-06 16:53:36.789,0.001,0,62,False,success,None,0.001
-421,Download file,2026-04-06 16:53:37.741,0.951,0,62,False,success,None,0.001
-421,Switch,2026-04-06 16:53:37.744,0.002,0,2,False,success,None,0.001
-421,Extract from CSV File,2026-04-06 16:53:37.750,0.005,0,136,True,success,None,0.001
-422,New Invoice Trigger,2026-04-06 16:54:16.680,0.438,0,4766,True,success,None,0.001
-422,Simple Memory,2026-04-06 16:54:16.690,0.001,0,52,False,success,None,0.009
-422,OpenAI Chat Model 1,2026-04-06 16:54:19.506,2.805,518,2072,False,success,None,0.011
-422,PDF Extractor,2026-04-06 16:54:20.873,1.365,0,432,True,success,None,0.002
-422,AI Agent: Data Ingestion Specialist,2026-04-06 16:54:25.881,5.004,0,497,True,success,None,0.004
-422,Simple Memory,2026-04-06 16:54:25.883,0.001,0,52,False,success,None,0.001
-422,OpenAI Chat Model 1,2026-04-06 16:54:30.865,4.981,894,3576,True,success,None,0.001
-422,Parse AI Classification,2026-04-06 16:54:30.873,0.007,0,460,True,success,None,0.001
-422,Extraction Successful?,2026-04-06 16:54:30.875,0.001,0,2,False,success,None,0.001
-422,Simple Memory1,2026-04-06 16:54:30.877,0.001,0,2453,True,success,None,0.001
-422,OpenAI Chat Model 2,2026-04-06 16:54:33.636,2.758,810,3240,False,success,None,0.001
-422,SerpAPI,2026-04-06 16:54:36.423,2.786,0,169,True,success,None,0.001
-422,Calculator,2026-04-06 16:54:36.426,0.002,0,34,True,success,None,0.001
-422,AI Agent: Business Intelligence Auditor,2026-04-06 16:54:39.026,2.599,0,337,True,success,None,0.001
-422,Simple Memory1,2026-04-06 16:54:39.029,0.002,0,2453,True,success,None,0.001
-422,OpenAI Chat Model 2,2026-04-06 16:54:41.605,2.575,1023,4092,True,success,None,0.001
-422,Convert to XML,2026-04-06 16:54:41.608,0.002,0,440,True,success,None,0.001
-422,Format XML Output,2026-04-06 16:54:41.611,0.002,0,941,True,success,None,0.001
-422,Needs Approval?,2026-04-06 16:54:41.614,0.002,0,941,True,success,None,0.001
-422,Request Approval Email,2026-04-06 16:54:42.109,0.494,0,99,False,success,None,0.001
-422,Wait,2026-04-06 16:54:56.824,0.002,0,63,False,success,None,14.713
-422,Move File Archiv_Manuell,2026-04-06 16:54:57.997,1.171,0,140,True,success,None,0.002
-422,Archive to Google Sheets (Manuell),2026-04-06 16:54:59.862,1.864,0,32,False,success,None,0.001
-423,When Executed by Another Workflow,2026-04-06 16:54:19.528,0.0,0,62,False,success,None,0.001
-423,Download file,2026-04-06 16:54:20.835,1.306,0,62,False,success,None,0.001
-423,Extract from File,2026-04-06 16:54:20.859,0.023,0,805,True,success,None,0.001
-423,Extract PDF Text,2026-04-06 16:54:20.865,0.005,0,432,True,success,None,0.001
-424,New Invoice Trigger,2026-04-06 16:55:05.097,0.968,0,4764,True,success,None,0.001
-424,Simple Memory,2026-04-06 16:55:05.102,0.0,0,52,False,success,None,0.005
-424,OpenAI Chat Model 1,2026-04-06 16:55:07.432,2.32,520,2080,False,success,None,0.01
-424,PDF Extractor,2026-04-06 16:55:09.161,1.726,0,450,True,success,None,0.003
-424,AI Agent: Data Ingestion Specialist,2026-04-06 16:55:13.102,3.94,0,451,True,success,None,0.001
-424,Simple Memory,2026-04-06 16:55:13.104,0.001,0,52,False,success,None,0.001
-424,OpenAI Chat Model 1,2026-04-06 16:55:17.029,3.924,878,3512,True,success,None,0.001
-424,Parse AI Classification,2026-04-06 16:55:17.038,0.008,0,415,True,success,None,0.001
-424,Extraction Successful?,2026-04-06 16:55:17.041,0.002,0,2,False,success,None,0.001
-424,Simple Memory1,2026-04-06 16:55:17.043,0.001,0,2425,True,success,None,0.001
-424,OpenAI Chat Model 2,2026-04-06 16:55:19.449,2.405,772,3088,False,success,None,0.001
-424,SerpAPI,2026-04-06 16:55:20.929,1.479,0,187,True,success,None,0.001
-424,Calculator,2026-04-06 16:55:20.931,0.001,0,23,False,success,None,0.001
-424,AI Agent: Business Intelligence Auditor,2026-04-06 16:55:23.520,2.588,0,470,True,success,None,0.001
-424,Simple Memory1,2026-04-06 16:55:23.521,0.0,0,2425,True,success,None,0.001
-424,OpenAI Chat Model 2,2026-04-06 16:55:26.092,2.57,1028,4112,True,success,None,0.001
-424,Convert to XML,2026-04-06 16:55:26.095,0.002,0,573,True,success,None,0.001
-424,Format XML Output,2026-04-06 16:55:26.097,0.001,0,1029,True,success,None,0.001
-424,Needs Approval?,2026-04-06 16:55:26.099,0.001,0,2,False,success,None,0.001
-424,Confirmation Email,2026-04-06 16:55:26.601,0.501,0,99,False,success,None,0.001
-424,Move File Archiv_Automatisch,2026-04-06 16:55:27.642,1.04,0,139,True,success,None,0.001
-424,Archive to Google Sheets (Automatisch),2026-04-06 16:55:29.104,1.461,0,36,False,success,None,0.001
-425,When Executed by Another Workflow,2026-04-06 16:55:07.456,0.001,0,62,False,success,None,0.001
-425,Download file,2026-04-06 16:55:09.134,1.677,0,62,False,success,None,0.001
-425,Extract from File,2026-04-06 16:55:09.147,0.012,0,823,True,success,None,0.001
-425,Extract PDF Text,2026-04-06 16:55:09.154,0.006,0,450,True,success,None,0.001
-426,New Invoice Trigger,2026-04-06 16:55:25.572,0.34,0,4762,True,success,None,0.001
-426,Simple Memory,2026-04-06 16:55:25.594,0.003,0,52,False,success,None,0.019
-426,OpenAI Chat Model 1,2026-04-06 16:55:28.521,2.916,519,2076,False,success,None,0.011
-426,PDF Extractor,2026-04-06 16:55:30.298,1.775,0,498,True,success,None,0.002
-426,AI Agent: Data Ingestion Specialist,2026-04-06 16:55:35.385,5.086,0,493,True,success,None,0.001
-426,Simple Memory,2026-04-06 16:55:35.387,0.001,0,52,False,success,None,0.001
-426,OpenAI Chat Model 1,2026-04-06 16:55:40.458,5.07,911,3644,True,success,None,0.001
-426,Parse AI Classification,2026-04-06 16:55:40.467,0.008,0,456,True,success,None,0.001
-426,Extraction Successful?,2026-04-06 16:55:40.469,0.001,0,2,False,success,None,0.001
-426,Simple Memory1,2026-04-06 16:55:40.471,0.001,0,2516,True,success,None,0.001
-426,OpenAI Chat Model 2,2026-04-06 16:55:41.642,1.17,816,3264,False,success,None,0.001
-426,SerpAPI,2026-04-06 16:55:43.985,2.342,0,183,True,success,None,0.001
-426,Calculator,2026-04-06 16:55:43.987,0.001,0,23,False,success,None,0.001
-426,AI Agent: Business Intelligence Auditor,2026-04-06 16:55:46.057,2.069,0,413,True,success,None,0.001
-426,Simple Memory1,2026-04-06 16:55:46.059,0.001,0,2516,True,success,None,0.001
-426,OpenAI Chat Model 2,2026-04-06 16:55:48.112,2.052,1051,4204,True,success,None,0.001
-426,Convert to XML,2026-04-06 16:55:48.114,0.001,0,516,True,success,None,0.001
-426,Format XML Output,2026-04-06 16:55:48.118,0.003,0,1013,True,success,None,0.001
-426,Needs Approval?,2026-04-06 16:55:48.122,0.003,0,2,False,success,None,0.001
-426,Confirmation Email,2026-04-06 16:55:48.634,0.511,0,99,False,success,None,0.001
-426,Move File Archiv_Automatisch,2026-04-06 16:55:49.633,0.998,0,138,True,success,None,0.001
-426,Archive to Google Sheets (Automatisch),2026-04-06 16:55:51.119,1.485,0,36,False,success,None,0.001
-427,When Executed by Another Workflow,2026-04-06 16:55:28.544,0.0,0,62,False,success,None,0.001
-427,Download file,2026-04-06 16:55:30.262,1.717,0,62,False,success,None,0.001
-427,Extract from File,2026-04-06 16:55:30.279,0.016,0,871,True,success,None,0.001
-427,Extract PDF Text,2026-04-06 16:55:30.292,0.012,0,498,True,success,None,0.001
-428,New Invoice Trigger,2026-04-06 16:55:48.286,0.372,0,4760,True,success,None,0.001
-428,Simple Memory,2026-04-06 16:55:48.292,0.001,0,52,False,success,None,0.005
-428,OpenAI Chat Model 1,2026-04-06 16:55:50.527,2.23,518,2072,False,success,None,0.005
-428,PDF Extractor,2026-04-06 16:55:51.624,1.093,0,471,True,success,None,0.004
-428,AI Agent: Data Ingestion Specialist,2026-04-06 16:55:56.350,4.725,0,498,True,success,None,0.001
-428,Simple Memory,2026-04-06 16:55:56.352,0.001,0,52,False,success,None,0.001
-428,OpenAI Chat Model 1,2026-04-06 16:56:01.063,4.71,879,3516,True,success,None,0.001
-428,Parse AI Classification,2026-04-06 16:56:01.083,0.019,0,396,True,success,None,0.001
-428,Extraction Successful?,2026-04-06 16:56:01.086,0.002,0,2,False,success,None,0.001
-428,Simple Memory1,2026-04-06 16:56:01.088,0.001,0,2493,True,success,None,0.001
-428,OpenAI Chat Model 2,2026-04-06 16:56:19.086,17.997,768,3072,False,success,None,0.001
-428,SerpAPI,2026-04-06 16:56:25.005,5.918,0,160,True,success,None,0.001
-428,Calculator,2026-04-06 16:56:25.007,0.001,0,22,False,success,None,0.001
-428,AI Agent: Business Intelligence Auditor,2026-04-06 16:56:27.508,2.5,0,507,True,success,None,0.001
-428,Simple Memory1,2026-04-06 16:56:27.510,0.001,0,2493,True,success,None,0.001
-428,OpenAI Chat Model 2,2026-04-06 16:56:29.988,2.477,1042,4168,True,success,None,0.001
-428,Convert to XML,2026-04-06 16:56:29.990,0.001,0,610,True,success,None,0.001
-428,Format XML Output,2026-04-06 16:56:29.995,0.004,0,1047,True,success,None,0.001
-428,Needs Approval?,2026-04-06 16:56:29.998,0.002,0,2,False,success,None,0.001
-428,Confirmation Email,2026-04-06 16:56:30.537,0.538,0,99,False,success,None,0.001
-428,Move File Archiv_Automatisch,2026-04-06 16:56:31.630,1.092,0,138,True,success,None,0.001
-428,Archive to Google Sheets (Automatisch),2026-04-06 16:56:36.109,4.478,0,36,False,success,None,0.001
-429,When Executed by Another Workflow,2026-04-06 16:55:50.551,0.001,0,62,False,success,None,0.001
-429,Download file,2026-04-06 16:55:51.601,1.049,0,62,False,success,None,0.001
-429,Extract from File,2026-04-06 16:55:51.613,0.011,0,844,True,success,None,0.001
-429,Extract PDF Text,2026-04-06 16:55:51.620,0.006,0,471,True,success,None,0.001
-430,New Invoice Trigger,2026-04-06 16:56:35.327,0.563,0,4756,True,success,None,0.001
-430,Simple Memory,2026-04-06 16:56:35.334,0.001,0,52,False,success,None,0.006
-430,OpenAI Chat Model 1,2026-04-06 16:56:39.017,3.673,518,2072,False,success,None,0.01
-430,PDF Extractor,2026-04-06 16:56:40.155,1.135,0,468,True,success,None,0.003
-430,AI Agent: Data Ingestion Specialist,2026-04-06 16:56:44.169,4.013,0,493,True,success,None,0.001
-430,Simple Memory,2026-04-06 16:56:44.170,0.0,0,52,False,success,None,0.001
-430,OpenAI Chat Model 1,2026-04-06 16:56:48.164,3.993,887,3548,True,success,None,0.001
-430,Parse AI Classification,2026-04-06 16:56:48.177,0.012,0,457,True,success,None,0.001
-430,Extraction Successful?,2026-04-06 16:56:48.181,0.003,0,2,False,success,None,0.001
-430,Simple Memory1,2026-04-06 16:56:48.183,0.001,0,2483,True,success,None,0.001
-430,OpenAI Chat Model 2,2026-04-06 16:56:49.722,1.538,787,3148,False,success,None,0.001
-430,SerpAPI,2026-04-06 16:56:51.567,1.844,0,1886,True,success,None,0.001
-430,Calculator,2026-04-06 16:56:51.569,0.001,0,22,False,success,None,0.001
-430,AI Agent: Business Intelligence Auditor,2026-04-06 16:56:53.407,1.837,0,427,True,success,None,0.001
-430,Simple Memory1,2026-04-06 16:56:53.410,0.002,0,2483,True,success,None,0.001
-430,OpenAI Chat Model 2,2026-04-06 16:56:55.226,1.815,1624,6496,True,success,None,0.001
-430,Convert to XML,2026-04-06 16:56:55.228,0.001,0,530,True,success,None,0.001
-430,Format XML Output,2026-04-06 16:56:55.231,0.002,0,1028,True,success,None,0.001
-430,Needs Approval?,2026-04-06 16:56:55.234,0.002,0,2,False,success,None,0.001
-430,Confirmation Email,2026-04-06 16:56:55.741,0.506,0,99,False,success,None,0.001
-430,Move File Archiv_Automatisch,2026-04-06 16:56:56.799,1.057,0,136,True,success,None,0.001
-430,Archive to Google Sheets (Automatisch),2026-04-06 16:56:58.795,1.995,0,36,False,success,None,0.001
-431,When Executed by Another Workflow,2026-04-06 16:56:39.042,0.0,0,62,False,success,None,0.001
-431,Download file,2026-04-06 16:56:40.130,1.087,0,62,False,success,None,0.001
-431,Extract from File,2026-04-06 16:56:40.144,0.013,0,841,True,success,None,0.001
-431,Extract PDF Text,2026-04-06 16:56:40.151,0.006,0,468,True,success,None,0.001
-432,New Invoice Trigger,2026-04-06 16:56:58.600,0.389,0,18316,True,success,None,0.001
-432,Simple Memory,2026-04-06 16:56:58.606,0.0,0,52,False,success,None,0.006
-432,OpenAI Chat Model 1,2026-04-06 16:57:00.573,1.959,512,2048,False,success,None,0.008
-432,Google Vision OCR,2026-04-06 16:57:02.610,2.032,0,1138,True,success,None,0.005
-432,AI Agent: Data Ingestion Specialist,2026-04-06 16:57:07.204,4.593,0,573,True,success,None,0.001
-432,Simple Memory,2026-04-06 16:57:07.207,0.002,0,52,False,success,None,0.001
-432,OpenAI Chat Model 1,2026-04-06 16:57:11.779,4.571,1155,4620,True,success,None,0.001
-432,Parse AI Classification,2026-04-06 16:57:11.803,0.023,0,535,True,success,None,0.001
-432,Extraction Successful?,2026-04-06 16:57:11.809,0.005,0,2,False,success,None,0.001
-432,Simple Memory1,2026-04-06 16:57:11.813,0.003,0,3288,True,success,None,0.001
-432,OpenAI Chat Model 2,2026-04-06 16:57:13.375,1.561,1070,4280,False,success,None,0.001
-432,SerpAPI,2026-04-06 16:57:15.769,2.393,0,185,True,success,None,0.001
-432,Calculator,2026-04-06 16:57:15.771,0.001,0,25,False,success,None,0.001
-432,AI Agent: Business Intelligence Auditor,2026-04-06 16:57:19.757,3.985,0,930,True,success,None,0.001
-432,Simple Memory1,2026-04-06 16:57:19.759,0.001,0,3288,True,success,None,0.001
-432,OpenAI Chat Model 2,2026-04-06 16:57:23.725,3.965,1455,1055,True,success,None,0.001
-432,Convert to XML,2026-04-06 16:57:23.728,0.002,0,1033,True,success,None,0.001
-432,Format XML Output,2026-04-06 16:57:23.731,0.002,0,1609,True,success,None,0.001
-432,Needs Approval?,2026-04-06 16:57:23.733,0.001,0,1609,True,success,None,0.001
-432,Request Approval Email,2026-04-06 16:57:24.253,0.519,0,99,False,success,None,0.001
-432,Wait,2026-04-06 17:00:27.623,0.001,0,63,False,success,None,183.369
-432,Move File Archiv_Manuell,2026-04-06 17:00:28.614,0.989,0,118,False,success,None,0.002
-432,Archive to Google Sheets (Manuell),2026-04-06 17:00:30.916,2.301,0,32,False,success,None,0.001
-433,When Executed by Another Workflow,2026-04-06 16:57:00.597,0.002,0,62,False,success,None,0.001
-433,Download file,2026-04-06 16:57:02.004,1.406,0,62,False,success,None,0.001
-433,Extract from File,2026-04-06 16:57:02.074,0.069,0,296692,True,success,None,0.001
-433,HTTP Request,2026-04-06 16:57:02.533,0.458,0,78221,True,success,None,0.001
-433,Extract Text from JSON,2026-04-06 16:57:02.554,0.02,0,1138,True,success,None,0.001
-434,New Invoice Trigger,2026-04-06 17:00:36.915,0.391,0,18316,True,success,None,0.001
-434,Simple Memory,2026-04-06 17:00:36.923,0.001,0,52,False,success,None,0.007
-434,OpenAI Chat Model 1,2026-04-06 17:00:39.820,2.883,515,2060,False,success,None,0.014
-434,Google Vision OCR,2026-04-06 17:00:41.887,2.064,0,1144,True,success,None,0.003
-434,AI Agent: Data Ingestion Specialist,2026-04-06 17:00:53.168,11.28,0,622,True,success,None,0.001
-434,Simple Memory,2026-04-06 17:00:53.170,0.001,0,52,False,success,None,0.001
-434,OpenAI Chat Model 1,2026-04-06 17:01:04.434,11.263,1192,4768,True,success,None,0.001
-434,Parse AI Classification,2026-04-06 17:01:04.440,0.005,0,475,True,success,None,0.001
-434,Extraction Successful?,2026-04-06 17:01:04.442,0.001,0,2,False,success,None,0.001
-434,Simple Memory1,2026-04-06 17:01:04.444,0.001,0,3351,True,success,None,0.001
-434,OpenAI Chat Model 2,2026-04-06 17:01:14.888,10.443,1101,4404,False,success,None,0.001
-434,SerpAPI,2026-04-06 17:01:20.337,5.448,0,139,True,success,None,0.001
-434,Calculator,2026-04-06 17:01:20.339,0.001,0,33,True,success,None,0.001
-434,AI Agent: Business Intelligence Auditor,2026-04-06 17:01:24.032,3.692,0,534,True,success,None,0.001
-434,Simple Memory1,2026-04-06 17:01:24.033,0.0,0,3351,True,success,None,0.001
-434,OpenAI Chat Model 2,2026-04-06 17:01:27.697,3.663,1374,5496,True,success,None,0.001
-434,Convert to XML,2026-04-06 17:01:27.699,0.001,0,637,True,success,None,0.001
-434,Format XML Output,2026-04-06 17:01:27.702,0.002,0,1153,True,success,None,0.001
-434,Needs Approval?,2026-04-06 17:01:27.705,0.002,0,1153,True,success,None,0.001
-434,Request Approval Email,2026-04-06 17:01:28.301,0.595,0,99,True,success,None,0.001
-434,Wait,2026-04-06 17:01:48.118,0.002,0,63,False,success,None,19.815
-434,Move File Archiv_Manuell,2026-04-06 17:01:49.795,1.676,0,118,False,success,None,0.001
-434,Archive to Google Sheets (Manuell),2026-04-06 17:01:51.355,1.559,0,32,False,success,None,0.001
-435,When Executed by Another Workflow,2026-04-06 17:00:39.847,0.002,0,62,False,success,None,0.001
-435,Download file,2026-04-06 17:00:41.266,1.418,0,62,False,success,None,0.001
-435,Extract from File,2026-04-06 17:00:41.340,0.073,0,297632,True,success,None,0.001
-435,HTTP Request,2026-04-06 17:00:41.812,0.471,0,79587,True,success,None,0.001
-435,Extract Text from JSON,2026-04-06 17:00:41.836,0.023,0,1144,True,success,None,0.001
-436,New Invoice Trigger,2026-04-06 17:01:53.599,0.391,0,18315,True,success,None,0.001
-436,Simple Memory,2026-04-06 17:01:53.611,0.0,0,52,False,success,None,0.012
-436,OpenAI Chat Model 1,2026-04-06 17:01:56.152,2.533,516,2064,False,success,None,0.008
-436,Google Vision OCR,2026-04-06 17:01:57.898,1.744,0,1310,True,success,None,0.002
-436,AI Agent: Data Ingestion Specialist,2026-04-06 17:02:03.401,5.502,0,449,True,success,None,0.001
-436,Simple Memory,2026-04-06 17:02:03.402,0.0,0,52,False,success,None,0.001
-436,OpenAI Chat Model 1,2026-04-06 17:02:08.886,5.483,1202,4808,True,success,None,0.001
-436,Parse AI Classification,2026-04-06 17:02:08.895,0.008,0,411,True,success,None,0.001
-436,Extraction Successful?,2026-04-06 17:02:08.898,0.002,0,2,False,success,None,0.001
-436,Simple Memory1,2026-04-06 17:02:08.900,0.001,0,3344,True,success,None,0.001
-436,OpenAI Chat Model 2,2026-04-06 17:02:11.082,2.181,1094,4376,False,success,None,0.001
-436,SerpAPI,2026-04-06 17:02:19.111,8.028,0,170,False,success,None,0.001
-436,Calculator,2026-04-06 17:02:19.116,0.004,0,33,True,success,None,0.001
-436,AI Agent: Business Intelligence Auditor,2026-04-06 17:02:21.124,2.007,0,352,True,success,None,0.001
-436,Simple Memory1,2026-04-06 17:02:21.128,0.003,0,3344,True,success,None,0.001
-436,OpenAI Chat Model 2,2026-04-06 17:02:23.112,1.983,1305,5220,True,success,None,0.001
-436,Convert to XML,2026-04-06 17:02:23.114,0.001,0,455,True,success,None,0.001
-436,Format XML Output,2026-04-06 17:02:23.117,0.002,0,907,True,success,None,0.001
-436,Needs Approval?,2026-04-06 17:02:23.119,0.001,0,907,True,success,None,0.001
-436,Request Approval Email,2026-04-06 17:02:23.628,0.508,0,99,False,success,None,0.001
-436,Wait,2026-04-06 17:03:35.851,0.001,0,63,False,success,None,72.222
-436,Move File Archiv_Manuell,2026-04-06 17:03:37.071,1.219,0,118,False,success,None,0.001
-436,Archive to Google Sheets (Manuell),2026-04-06 17:03:39.179,2.107,0,32,False,success,None,0.001
-437,When Executed by Another Workflow,2026-04-06 17:01:56.176,0.001,0,62,False,success,None,0.001
-437,Download file,2026-04-06 17:01:57.163,0.986,0,62,False,success,None,0.001
-437,Extract from File,2026-04-06 17:01:57.244,0.08,0,328016,True,success,None,0.001
-437,HTTP Request,2026-04-06 17:01:57.738,0.493,0,79781,True,success,None,0.001
-437,Extract Text from JSON,2026-04-06 17:01:57.803,0.064,0,1310,True,success,None,0.001
-438,New Invoice Trigger,2026-04-06 17:03:41.554,0.425,0,18301,True,success,None,0.001
-438,Simple Memory,2026-04-06 17:03:41.562,0.001,0,52,False,success,None,0.007
-438,OpenAI Chat Model 1,2026-04-06 17:03:44.140,2.572,517,2068,False,success,None,0.006
-438,Google Vision OCR,2026-04-06 17:03:45.718,1.575,0,1173,True,success,None,0.003
-438,AI Agent: Data Ingestion Specialist,2026-04-06 17:03:50.605,4.886,0,606,True,success,None,0.001
-438,Simple Memory,2026-04-06 17:03:50.607,0.001,0,52,False,success,None,0.001
-438,OpenAI Chat Model 1,2026-04-06 17:03:55.468,4.86,1196,4784,True,success,None,0.001
-438,Parse AI Classification,2026-04-06 17:03:55.475,0.006,0,569,True,success,None,0.001
-438,Extraction Successful?,2026-04-06 17:03:55.477,0.001,0,2,False,success,None,0.001
-438,Simple Memory1,2026-04-06 17:03:55.479,0.001,0,3361,True,success,None,0.001
-438,OpenAI Chat Model 2,2026-04-06 17:03:57.400,1.92,1120,4480,False,success,None,0.001
-438,SerpAPI,2026-04-06 17:03:59.561,2.16,0,175,True,success,None,0.001
-438,Calculator,2026-04-06 17:03:59.563,0.001,0,34,True,success,None,0.001
-438,AI Agent: Business Intelligence Auditor,2026-04-06 17:04:02.545,2.981,0,510,True,success,None,0.001
-438,Simple Memory1,2026-04-06 17:04:02.547,0.001,0,3361,True,success,None,0.001
-438,OpenAI Chat Model 2,2026-04-06 17:04:05.504,2.956,1381,5524,True,success,None,0.001
-438,Convert to XML,2026-04-06 17:04:05.506,0.001,0,613,True,success,None,0.001
-438,Format XML Output,2026-04-06 17:04:05.509,0.002,0,1223,True,success,None,0.001
-438,Needs Approval?,2026-04-06 17:04:05.513,0.003,0,1223,True,success,None,0.001
-438,Request Approval Email,2026-04-06 17:04:06.053,0.539,0,99,True,success,None,0.001
-438,Wait,2026-04-06 17:04:18.527,0.002,0,63,False,success,None,12.472
-438,Move File Archiv_Manuell,2026-04-06 17:04:19.686,1.158,0,118,False,success,None,0.001
-438,Archive to Google Sheets (Manuell),2026-04-06 17:04:21.272,1.584,0,32,False,success,None,0.002
-439,When Executed by Another Workflow,2026-04-06 17:03:44.165,0.0,0,62,False,success,None,0.001
-439,Download file,2026-04-06 17:03:45.131,0.965,0,62,False,success,None,0.001
-439,Extract from File,2026-04-06 17:03:45.203,0.071,0,312288,True,success,None,0.001
-439,HTTP Request,2026-04-06 17:03:45.639,0.435,0,77699,True,success,None,0.001
-439,Extract Text from JSON,2026-04-06 17:03:45.667,0.027,0,1173,True,success,None,0.001
+case_id,activity,previous_activity,execution_index,timestamp,execution_time_sec,token_usage,data_volume_bytes,pii_detected,execution_status,error_type,system_overhead_sec
+637,New Invoice Trigger,,0,2026-05-16 14:54:34.559,0.426,0,4125,True,success,None,0.001
+637,Simple Memory,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:54:34.583,0.001,0,52,False,success,None,0.023
+637,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:54:39.110,4.497,533,2132,False,success,None,0.03
+637,When Executed by Another Workflow,,0,2026-05-16 14:54:39.141,0.001,0,62,False,success,None,0.001
+637,Download file,When Executed by Another Workflow,0,2026-05-16 14:54:40.168,1.027,0,16486,False,success,None,0.001
+637,Extract from File,Download file,0,2026-05-16 14:54:40.190,0.022,0,872,True,success,None,0.001
+637,Extract PDF Text,Extract from File,0,2026-05-16 14:54:40.224,0.033,0,499,True,success,None,0.001
+637,PDF Extractor,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:54:40.240,1.126,0,499,True,success,None,0.004
+637,Simple Memory,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:54:40.253,0.001,0,52,False,success,None,0.001
+637,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:54:46.302,6.036,907,3628,True,success,None,0.013
+637,AI Agent: Data Ingestion Specialist,New Invoice Trigger,0,2026-05-16 14:54:46.304,6.063,0,438,True,success,None,0.001
+637,Parse AI Classification,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:54:46.321,0.016,0,402,True,success,None,0.003
+637,Extraction Successful?,Parse AI Classification,0,2026-05-16 14:54:46.324,0.002,0,2,False,success,None,0.001
+637,Simple Memory1,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:54:46.339,0.001,0,2463,True,success,None,0.014
+637,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:54:50.102,3.75,780,3120,False,success,None,0.013
+637,SerpAPI,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:54:54.620,4.515,0,166,True,success,None,0.003
+637,Calculator,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:54:54.623,0.002,0,22,False,success,None,0.001
+637,Simple Memory1,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:54:54.636,0.002,0,2463,True,success,None,0.001
+637,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:54:56.850,2.198,1008,4032,True,success,None,0.016
+637,AI Agent: Business Intelligence Auditor,Extraction Successful?,0,2026-05-16 14:54:56.853,2.229,0,385,True,success,None,0.001
+637,Parse BI Analysis,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:54:56.867,0.013,0,663,True,success,None,0.004
+637,Convert to XML,Parse BI Analysis,0,2026-05-16 14:54:56.869,0.002,0,953,True,success,None,0.001
+637,Format XML Output,Convert to XML,0,2026-05-16 14:54:56.873,0.003,0,1657,True,success,None,0.001
+637,Needs Approval?,Format XML Output,0,2026-05-16 14:54:56.875,0.001,0,2,False,success,None,0.001
+637,Confirmation Email,Needs Approval?,0,2026-05-16 14:54:57.643,0.767,0,99,False,success,None,0.001
+637,Move File Archiv_Automatisch,Confirmation Email,0,2026-05-16 14:54:58.628,0.984,0,139,True,success,None,0.001
+637,Archive to Google Sheets (Automatisch),Move File Archiv_Automatisch,0,2026-05-16 14:55:02.706,4.077,0,604,True,success,None,0.001
+639,New Invoice Trigger,,0,2026-05-16 14:55:06.731,0.337,0,4123,True,success,None,0.001
+639,Simple Memory,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:06.739,0.001,0,52,False,success,None,0.007
+639,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:10.483,3.737,534,2136,False,success,None,0.007
+639,When Executed by Another Workflow,,0,2026-05-16 14:55:10.509,0.001,0,62,False,success,None,0.001
+639,Download file,When Executed by Another Workflow,0,2026-05-16 14:55:11.557,1.048,0,15257,False,success,None,0.001
+639,Extract from File,Download file,0,2026-05-16 14:55:11.567,0.009,0,821,True,success,None,0.001
+639,Extract PDF Text,Extract from File,0,2026-05-16 14:55:11.575,0.007,0,448,True,success,None,0.001
+639,PDF Extractor,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:11.580,1.094,0,448,True,success,None,0.003
+639,Simple Memory,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:55:11.588,0.001,0,52,False,success,None,0.001
+639,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:55:16.428,4.833,899,3596,True,success,None,0.007
+639,AI Agent: Data Ingestion Specialist,New Invoice Trigger,0,2026-05-16 14:55:16.432,4.851,0,492,True,success,None,0.001
+639,Parse AI Classification,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:16.445,0.012,0,450,True,success,None,0.005
+639,Extraction Successful?,Parse AI Classification,0,2026-05-16 14:55:16.448,0.002,0,2,False,success,None,0.001
+639,Simple Memory1,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:16.460,0.001,0,2463,True,success,None,0.011
+639,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:19.237,2.768,782,3128,False,success,None,0.009
+639,SerpAPI,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:20.704,1.463,0,139,False,success,None,0.004
+639,Calculator,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:20.707,0.002,0,23,False,success,None,0.001
+639,Simple Memory1,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:55:20.719,0.002,0,2463,True,success,None,0.001
+639,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:55:23.208,2.476,1014,4056,True,success,None,0.013
+639,AI Agent: Business Intelligence Auditor,Extraction Successful?,0,2026-05-16 14:55:23.210,2.502,0,410,True,success,None,0.001
+639,Parse BI Analysis,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:23.224,0.013,0,598,True,success,None,0.003
+639,Convert to XML,Parse BI Analysis,0,2026-05-16 14:55:23.226,0.001,0,888,True,success,None,0.001
+639,Format XML Output,Convert to XML,0,2026-05-16 14:55:23.229,0.002,0,1527,True,success,None,0.001
+639,Needs Approval?,Format XML Output,0,2026-05-16 14:55:23.232,0.002,0,1527,True,success,None,0.001
+639,Request Approval Email,Needs Approval?,0,2026-05-16 14:55:23.736,0.503,0,99,False,success,None,0.001
+639,Wait,Request Approval Email,0,2026-05-16 14:55:40.981,0.003,0,63,False,success,None,17.242
+639,Move File Archiv_Manuell,Wait,0,2026-05-16 14:55:41.911,0.93,0,138,False,success,None,0.001
+639,Archive to Google Sheets (Manuell),Move File Archiv_Manuell,0,2026-05-16 14:55:44.492,2.58,0,536,True,success,None,0.001
+641,New Invoice Trigger,,0,2026-05-16 14:55:47.490,0.351,0,4125,True,success,None,0.001
+641,Simple Memory,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:47.498,0.001,0,52,False,success,None,0.007
+641,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:50.529,3.022,536,2144,False,success,None,0.009
+641,When Executed by Another Workflow,,0,2026-05-16 14:55:50.552,0.001,0,62,False,success,None,0.001
+641,Download file,When Executed by Another Workflow,0,2026-05-16 14:55:52.014,1.462,0,15360,False,success,None,0.001
+641,Extract from File,Download file,0,2026-05-16 14:55:52.027,0.013,0,811,True,success,None,0.001
+641,Extract PDF Text,Extract from File,0,2026-05-16 14:55:52.034,0.007,0,438,True,success,None,0.001
+641,PDF Extractor,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:52.041,1.51,0,438,True,success,None,0.002
+641,Simple Memory,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:55:52.050,0.001,0,52,False,success,None,0.001
+641,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:55:56.125,4.062,901,3604,True,success,None,0.013
+641,AI Agent: Data Ingestion Specialist,New Invoice Trigger,0,2026-05-16 14:55:56.128,4.086,0,537,True,success,None,0.001
+641,Parse AI Classification,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:55:56.143,0.013,0,498,True,success,None,0.005
+641,Extraction Successful?,Parse AI Classification,0,2026-05-16 14:55:56.146,0.002,0,2,False,success,None,0.001
+641,Simple Memory1,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:56.155,0.001,0,2499,True,success,None,0.008
+641,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:55:58.058,1.894,792,3168,False,success,None,0.009
+641,SerpAPI,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:06.983,8.923,0,1922,True,success,None,0.002
+641,Calculator,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:06.985,0.001,0,22,False,success,None,0.001
+641,Simple Memory1,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:56:06.993,0.001,0,2499,True,success,None,0.001
+641,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:56:09.062,2.056,1515,6060,True,success,None,0.013
+641,AI Agent: Business Intelligence Auditor,Extraction Successful?,0,2026-05-16 14:56:09.066,2.08,0,386,True,success,None,0.001
+641,Parse BI Analysis,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:09.080,0.014,0,661,True,success,None,0.004
+641,Convert to XML,Parse BI Analysis,0,2026-05-16 14:56:09.084,0.002,0,951,True,success,None,0.002
+641,Format XML Output,Convert to XML,0,2026-05-16 14:56:09.086,0.002,0,1653,True,success,None,0.001
+641,Needs Approval?,Format XML Output,0,2026-05-16 14:56:09.088,0.001,0,2,False,success,None,0.001
+641,Confirmation Email,Needs Approval?,0,2026-05-16 14:56:09.620,0.531,0,99,True,success,None,0.001
+641,Move File Archiv_Automatisch,Confirmation Email,0,2026-05-16 14:56:10.607,0.986,0,139,True,success,None,0.001
+641,Archive to Google Sheets (Automatisch),Move File Archiv_Automatisch,0,2026-05-16 14:56:13.512,2.905,0,602,True,success,None,0.001
+643,New Invoice Trigger,,0,2026-05-16 14:56:18.444,0.309,0,4125,True,success,None,0.001
+643,Simple Memory,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:18.450,0.001,0,52,False,success,None,0.005
+643,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:22.326,3.87,537,2148,False,success,None,0.006
+643,When Executed by Another Workflow,,0,2026-05-16 14:56:22.355,0.001,0,62,False,success,None,0.001
+643,Download file,When Executed by Another Workflow,0,2026-05-16 14:56:23.290,0.935,0,15155,False,success,None,0.001
+643,Extract from File,Download file,0,2026-05-16 14:56:23.300,0.009,0,805,True,success,None,0.001
+643,Extract PDF Text,Extract from File,0,2026-05-16 14:56:23.313,0.013,0,432,True,success,None,0.001
+643,PDF Extractor,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:23.323,0.993,0,432,True,success,None,0.004
+643,Simple Memory,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:56:23.338,0.001,0,52,False,success,None,0.001
+643,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:56:29.060,5.717,881,3524,True,success,None,0.005
+643,AI Agent: Data Ingestion Specialist,New Invoice Trigger,0,2026-05-16 14:56:29.064,5.74,0,452,True,success,None,0.001
+643,Parse AI Classification,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:29.081,0.016,0,415,True,success,None,0.005
+643,Extraction Successful?,Parse AI Classification,0,2026-05-16 14:56:29.083,0.002,0,2,False,success,None,0.001
+643,Simple Memory1,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:29.092,0.001,0,2407,True,success,None,0.008
+643,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:30.561,1.458,754,3016,False,success,None,0.011
+643,SerpAPI,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:32.718,2.153,0,2303,True,success,None,0.004
+643,Calculator,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:32.727,0.008,0,34,True,success,None,0.001
+643,Simple Memory1,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:56:32.736,0.001,0,2407,True,success,None,0.001
+643,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:56:36.820,4.068,1933,7732,True,success,None,0.016
+643,AI Agent: Business Intelligence Auditor,Extraction Successful?,0,2026-05-16 14:56:36.823,4.095,0,837,True,success,None,0.001
+643,Parse BI Analysis,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:36.835,0.012,0,823,True,success,None,0.003
+643,Convert to XML,Parse BI Analysis,0,2026-05-16 14:56:36.837,0.001,0,1160,True,success,None,0.001
+643,Format XML Output,Convert to XML,0,2026-05-16 14:56:36.843,0.003,0,2024,True,success,None,0.003
+643,Needs Approval?,Format XML Output,0,2026-05-16 14:56:36.848,0.003,0,2,False,success,None,0.002
+643,Confirmation Email,Needs Approval?,0,2026-05-16 14:56:37.346,0.497,0,99,True,success,None,0.001
+643,Move File Archiv_Automatisch,Confirmation Email,0,2026-05-16 14:56:38.242,0.895,0,139,True,success,None,0.001
+643,Archive to Google Sheets (Automatisch),Move File Archiv_Automatisch,0,2026-05-16 14:56:40.195,1.953,0,624,True,success,None,0.001
+645,New Invoice Trigger,,0,2026-05-16 14:56:50.726,0.418,0,4125,True,success,None,0.001
+645,Simple Memory,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:50.736,0.001,0,52,False,success,None,0.009
+645,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:53.993,3.239,537,2148,False,success,None,0.018
+645,When Executed by Another Workflow,,0,2026-05-16 14:56:54.014,0.001,0,62,False,success,None,0.001
+645,Download file,When Executed by Another Workflow,0,2026-05-16 14:56:55.294,1.28,0,15667,False,success,None,0.001
+645,Extract from File,Download file,0,2026-05-16 14:56:55.303,0.008,0,845,True,success,None,0.001
+645,Extract PDF Text,Extract from File,0,2026-05-16 14:56:55.310,0.007,0,472,True,success,None,0.001
+645,PDF Extractor,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:55.317,1.322,0,472,True,success,None,0.002
+645,Simple Memory,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:56:55.323,0.001,0,52,False,success,None,0.001
+645,OpenAI Chat Model 1,AI Agent: Data Ingestion Specialist,1,2026-05-16 14:56:59.890,4.558,908,3632,True,success,None,0.009
+645,AI Agent: Data Ingestion Specialist,New Invoice Trigger,0,2026-05-16 14:56:59.893,4.575,0,506,True,success,None,0.001
+645,Parse AI Classification,AI Agent: Data Ingestion Specialist,0,2026-05-16 14:56:59.904,0.011,0,470,True,success,None,0.003
+645,Extraction Successful?,Parse AI Classification,0,2026-05-16 14:56:59.907,0.002,0,2,False,success,None,0.001
+645,Simple Memory1,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:56:59.917,0.001,0,2504,True,success,None,0.009
+645,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:57:02.663,2.739,794,3176,False,success,None,0.007
+645,SerpAPI,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:57:05.302,2.635,0,166,False,success,None,0.004
+645,Calculator,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:57:05.304,0.002,0,21,False,success,None,0.001
+645,Simple Memory1,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:57:05.314,0.001,0,2504,True,success,None,0.001
+645,OpenAI Chat Model 2,AI Agent: Business Intelligence Auditor,1,2026-05-16 14:57:08.773,3.448,1007,4028,True,success,None,0.011
+645,AI Agent: Business Intelligence Auditor,Extraction Successful?,0,2026-05-16 14:57:08.775,3.47,0,328,True,success,None,0.001
+645,Parse BI Analysis,AI Agent: Business Intelligence Auditor,0,2026-05-16 14:57:08.785,0.009,0,630,True,success,None,0.003
+645,Convert to XML,Parse BI Analysis,0,2026-05-16 14:57:08.789,0.002,0,895,True,success,None,0.002
+645,Format XML Output,Convert to XML,0,2026-05-16 14:57:08.791,0.001,0,1566,True,success,None,0.001
+645,Needs Approval?,Format XML Output,0,2026-05-16 14:57:08.793,0.001,0,2,False,success,None,0.001
+645,Confirmation Email,Needs Approval?,0,2026-05-16 14:57:09.292,0.498,0,99,False,success,None,0.001
+645,Move File Archiv_Automatisch,Confirmation Email,0,2026-05-16 14:57:10.209,0.917,0,139,True,success,None,0.001
+645,Archive to Google Sheets (Automatisch),Move File Archiv_Automatisch,0,2026-05-16 14:57:13.131,2.919,0,571,True,success,None,0.003
