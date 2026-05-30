@@ -1,0 +1,11 @@
+case_id,invoice_number,invoice_date,vendor,category,net_amount,tax_amount,total_amount,approval_path,extraction_successful,discount_granted,discount_amount,new_total,upsell_suggested,anomaly_detected,extraction_confidence,case_start_timestamp,case_end_timestamp,case_duration_sec,total_tokens,activity_count,error_count,pii_in_case
+637,36651,2012-05-12,SuperStore,Furniture,1676.74,335.35,1353.08,Automatisch,True,True,67.65,1285.43,True,False,0.95,2026-05-16 14:54:34.133,2026-05-16 14:55:02.706,28.573,3228,27,0,True
+639,6817,2012-10-23,SuperStore,Technology,10604.0,68.3,10672.3,Manuell,True,True,533.615,10138.685,True,False,0.95,2026-05-16 14:55:06.394,2026-05-16 14:55:44.492,38.098,3229,28,0,True
+641,36652,2012-05-12,SuperStore,Office Supplies,16.0,1.15,17.15,Automatisch,True,False,0.0,17.15,True,False,0.95,2026-05-16 14:55:47.139,2026-05-16 14:56:13.512,26.373,3744,27,0,True
+643,38460,2012-04-21,SuperStore,Office Supplies,1982.72,55.2,2037.92,Automatisch,True,True,101.9,1936.02,True,False,0.95,2026-05-16 14:56:18.135,2026-05-16 14:56:40.195,22.06,4105,27,0,True
+645,37425,2012-10-24,SuperStore,Office Supplies,197.63,39.53,160.94,Automatisch,True,False,0.0,160.94,True,False,0.95,2026-05-16 14:56:50.308,2026-05-16 14:57:13.131,22.823,3246,27,0,True
+648,10670,2012-08-15,SuperStore,Technology,31171.35,433.41,31604.76,Manuell,True,True,1580.24,30024.52,True,False,0.95,2026-05-20 19:21:49.621,2026-05-20 19:22:21.551,31.93,3260,28,0,True
+651,35602,2012-10-25,SuperStore,Technology,1919.8,45.79,1581.63,Automatisch,True,True,79.08,1502.55,True,False,0.95,2026-05-26 22:04:56.791,2026-05-26 22:05:32.343,35.552,3266,27,0,True
+653,,,,,,,,Unknown,False,False,0.0,,False,False,,2026-05-28 14:16:08.406,2026-05-28 14:16:10.238,1.832,0,4,2,True
+654,4820,2012-12-08,SuperStore,Furniture,3122.43,226.63,2724.57,Automatisch,True,True,136.23,2588.34,True,False,0.95,2026-05-28 14:19:50.463,2026-05-28 14:20:19.544,29.081,5116,32,0,True
+658,36651,2012-05-12,SuperStore,Bürobedarf,1676.74,0.0,1353.08,Unknown,True,True,67.65,1285.43,True,True,0.95,2026-05-28 20:39:53.126,2026-05-28 20:40:21.064,27.938,3506,26,1,True
