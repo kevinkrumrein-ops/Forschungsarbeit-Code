@@ -1,0 +1,79 @@
+case_id,workflow_id,root_workflow_id,activity,previous_activity,execution_index,timestamp,execution_time_sec,token_usage,data_volume_bytes,pii_detected,execution_status,error_type,system_overhead_sec
+665,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:23:53.482,0.001,0,62,False,success,None,0.001
+665,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:23:54.535,1.053,0,208896,False,success,None,0.001
+665,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:23:54.652,0.117,0,271572,True,success,None,0.001
+665,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:23:55.157,0.504,0,220775,True,success,None,0.001
+665,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:23:55.256,0.098,0,979,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:27:00.125,0.001,0,62,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:27:01.408,1.283,0,250880,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:27:01.488,0.08,0,327344,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:27:01.921,0.432,0,96683,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:27:01.944,0.022,0,427,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:27:01.986,0.001,0,62,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:27:03.092,1.106,0,318464,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:27:03.197,0.105,0,414928,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:27:03.678,0.481,0,226242,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:27:03.701,0.023,0,1043,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:27:03.755,0.001,0,62,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:27:04.863,1.108,0,257024,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:27:04.925,0.062,0,334728,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:27:05.344,0.418,0,107957,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:27:05.359,0.015,0,468,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:27:05.396,0.001,0,62,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:27:06.493,1.097,0,234496,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:27:06.580,0.086,0,304896,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:27:07.004,0.424,0,257666,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:27:07.031,0.026,0,1162,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,When Executed by Another Workflow,,0,2026-06-08 18:27:07.094,0.001,0,62,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Download file,When Executed by Another Workflow,0,2026-06-08 18:27:08.525,1.432,0,350208,False,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract from File,Download file,0,2026-06-08 18:27:08.620,0.095,0,456652,True,success,None,1.431
+667,0rbXKm-GDcdDEovRgajzY,unresolved,HTTP Request,Extract from File,0,2026-06-08 18:27:09.096,0.475,0,161612,True,success,None,0.001
+667,0rbXKm-GDcdDEovRgajzY,unresolved,Extract Text from JSON,HTTP Request,0,2026-06-08 18:27:09.117,0.021,0,718,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,DeepResearch Subworkflow,,0,2026-06-10 16:24:37.773,0.002,0,1053,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Execution Data,DeepResearch Subworkflow,0,2026-06-10 16:24:37.776,0.003,0,1053,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,JobType Router,Execution Data,0,2026-06-10 16:24:37.781,0.004,0,1053,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Get Existing Row,JobType Router,0,2026-06-10 16:24:38.345,0.561,0,940,True,success,None,0.003
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Set In-Progress,Get Existing Row,0,2026-06-10 16:24:38.925,0.58,0,940,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Set Initial Query,Set In-Progress,0,2026-06-10 16:24:38.929,0.004,0,975,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,DeepResearch Subworkflow,,0,2026-06-10 16:24:38.985,0.002,0,1042,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Execution Data,DeepResearch Subworkflow,0,2026-06-10 16:24:38.988,0.002,0,1042,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,JobType Router,Execution Data,0,2026-06-10 16:24:38.989,0.001,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,OpenAI Chat Model3,Generate SERP Queries,0,2026-06-10 16:24:42.699,3.651,1087,1701,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Structured Output Parser2,Generate SERP Queries,0,2026-06-10 16:24:42.701,0.001,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Generate SERP Queries,JobType Router,0,2026-06-10 16:24:42.702,3.712,0,1401,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,SERP to Items,Generate SERP Queries,0,2026-06-10 16:24:42.703,0.001,0,688,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,For Each Query...,SERP to Items,0,2026-06-10 16:24:42.707,0.003,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Item Ref,For Each Query...,0,2026-06-10 16:24:42.711,0.003,0,688,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,RAG Web Browser,Item Ref,0,2026-06-10 16:25:04.762,22.051,0,1482,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Is Apify Auth Error?,RAG Web Browser,0,2026-06-10 16:25:04.768,0.005,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Valid Results,Is Apify Auth Error?,0,2026-06-10 16:25:04.778,0.009,0,1482,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Has Content?,Valid Results,0,2026-06-10 16:25:04.782,0.003,0,1482,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Get Markdown + URL,Has Content?,0,2026-06-10 16:25:04.791,0.009,0,219,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,OpenAI Chat Model,DeepResearch Learnings,0,2026-06-10 16:25:13.652,8.79,8933,2463,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Structured Output Parser,DeepResearch Learnings,0,2026-06-10 16:25:13.654,0.001,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,DeepResearch Learnings,Get Markdown + URL,0,2026-06-10 16:25:13.657,8.866,0,2178,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Research Goal + Learnings,DeepResearch Learnings,0,2026-06-10 16:25:13.680,0.023,0,2987,True,success,None,0.003
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,For Each Query...,Research Goal + Learnings,1,2026-06-10 16:25:13.681,0.001,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Item Ref,For Each Query...,1,2026-06-10 16:25:13.682,0.002,0,684,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,RAG Web Browser,Item Ref,1,2026-06-10 16:25:26.609,12.927,0,22088,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Is Apify Auth Error?,RAG Web Browser,1,2026-06-10 16:25:26.612,0.002,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Valid Results,Is Apify Auth Error?,1,2026-06-10 16:25:26.613,0.001,0,22088,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Has Content?,Valid Results,1,2026-06-10 16:25:26.615,0.001,0,22088,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Get Markdown + URL,Has Content?,1,2026-06-10 16:25:26.618,0.003,0,21069,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,OpenAI Chat Model,DeepResearch Learnings,1,2026-06-10 16:25:31.432,4.763,12492,2114,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Structured Output Parser,DeepResearch Learnings,1,2026-06-10 16:25:31.434,0.001,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,DeepResearch Learnings,Get Markdown + URL,1,2026-06-10 16:25:31.435,4.817,0,1827,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Research Goal + Learnings,DeepResearch Learnings,1,2026-06-10 16:25:31.437,0.001,0,2681,True,success,None,0.002
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,For Each Query...,Research Goal + Learnings,2,2026-06-10 16:25:31.438,0.001,0,2987,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Combine & Send back to Loop,For Each Query...,0,2026-06-10 16:25:31.439,0.001,0,5682,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Generate Learnings,Set Initial Query,0,2026-06-10 16:25:31.478,52.549,0,5682,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Accumulate Results,Generate Learnings,0,2026-06-10 16:25:31.510,0.032,0,3127,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Is Depth Reached?,Accumulate Results,0,2026-06-10 16:25:31.515,0.005,0,2,False,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,DeepResearch Results,Is Depth Reached?,0,2026-06-10 16:25:31.524,0.009,0,5682,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Results to Items,DeepResearch Results,0,2026-06-10 16:25:31.528,0.003,0,2987,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Set Next Queries,Results to Items,0,2026-06-10 16:25:31.545,0.016,0,3328,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Generate Learnings,Set Next Queries,1,2026-06-10 16:27:23.379,111.834,0,6602,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Accumulate Results,Generate Learnings,1,2026-06-10 16:27:23.381,0.001,0,9701,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Is Depth Reached?,Accumulate Results,1,2026-06-10 16:27:23.382,0.001,0,9701,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Get Research Results,Is Depth Reached?,0,2026-06-10 16:27:23.388,0.007,0,9680,True,success,None,0.001
+885,cwhfTav_bPOTurNRAh7Wz,unresolved,Generate Report,Get Research Results,0,2026-06-10 16:27:23.424,0.035,0,20368,True,success,None,0.001

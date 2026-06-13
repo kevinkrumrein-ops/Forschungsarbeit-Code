@@ -1,0 +1,401 @@
+case_id,workflow_id,root_workflow_id,activity,previous_activity,execution_index,timestamp,execution_time_sec,token_usage,data_volume_bytes,pii_detected,execution_status,error_type,system_overhead_sec
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,On form submission,,0,2026-06-10 21:38:10.302,0.002,0,74,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Request,On form submission,0,2026-06-10 21:38:26.381,0.002,0,375,True,success,None,16.077
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Set Variables,Research Request,0,2026-06-10 21:38:26.387,0.003,0,99,True,success,None,0.003
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model2,Clarifying Questions,0,2026-06-10 21:38:29.450,3.025,702,2808,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser1,Clarifying Questions,0,2026-06-10 21:38:29.454,0.001,0,2,False,success,None,0.003
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Clarifying Questions,Set Variables,0,2026-06-10 21:38:29.455,3.065,0,558,False,success,None,0.003
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Feedback to Items,Clarifying Questions,0,2026-06-10 21:38:29.457,0.001,0,228,False,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Question...,Feedback to Items,0,2026-06-10 21:38:29.465,0.004,0,2,False,success,None,0.004
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Ask Clarity Questions,For Each Question...,0,2026-06-10 21:38:54.007,0.002,0,370,False,success,None,24.54
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Question...,Ask Clarity Questions,1,2026-06-10 21:38:54.009,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Ask Clarity Questions,For Each Question...,1,2026-06-10 21:39:11.071,0.007,0,272,False,success,None,17.055
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Question...,Ask Clarity Questions,2,2026-06-10 21:39:11.073,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Ask Clarity Questions,For Each Question...,2,2026-06-10 21:39:31.828,0.001,0,257,False,success,None,20.754
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Question...,Ask Clarity Questions,3,2026-06-10 21:39:31.830,0.001,0,370,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Initial Query,For Each Question...,0,2026-06-10 21:39:31.836,0.005,0,819,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model4,Report Page Generator,0,2026-06-10 21:39:33.586,1.727,581,2324,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser4,Report Page Generator,0,2026-06-10 21:39:33.589,0.001,0,2,False,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Report Page Generator,Get Initial Query,0,2026-06-10 21:39:33.591,1.753,0,326,True,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Create Row,Report Page Generator,0,2026-06-10 21:39:34.663,1.071,0,739,True,success,None,0.003
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Initiate DeepResearch,Create Row,0,2026-06-10 21:39:34.708,0.044,0,1667,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Subworkflow,,0,2026-06-10 21:39:34.725,0.001,0,928,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Execution Data,DeepResearch Subworkflow,0,2026-06-10 21:39:34.727,0.002,0,928,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,JobType Router,Execution Data,0,2026-06-10 21:39:34.728,0.001,0,928,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Existing Row,JobType Router,0,2026-06-10 21:39:35.255,0.526,0,739,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Set In-Progress,Get Existing Row,0,2026-06-10 21:39:36.363,1.107,0,739,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Set Initial Query,Set In-Progress,0,2026-06-10 21:39:36.365,0.001,0,850,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Subworkflow,,0,2026-06-10 21:39:36.405,0.001,0,917,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Execution Data,DeepResearch Subworkflow,0,2026-06-10 21:39:36.409,0.004,0,917,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,JobType Router,Execution Data,0,2026-06-10 21:39:36.411,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Confirmation,Initiate DeepResearch,0,2026-06-10 21:39:38.760,0.002,0,74,False,success,None,4.05
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,End Form,Confirmation,0,2026-06-10 21:39:39.990,0.001,0,74,False,success,None,1.229
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model3,Generate SERP Queries,0,2026-06-10 21:39:40.436,4.007,1089,1877,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser2,Generate SERP Queries,0,2026-06-10 21:39:40.438,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate SERP Queries,JobType Router,0,2026-06-10 21:39:40.439,4.028,0,1577,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,SERP to Items,Generate SERP Queries,0,2026-06-10 21:39:40.440,0.001,0,774,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,SERP to Items,0,2026-06-10 21:39:40.442,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,0,2026-06-10 21:39:40.443,0.001,0,774,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,0,2026-06-10 21:40:02.919,22.476,0,181069,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,0,2026-06-10 21:40:02.924,0.004,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,0,2026-06-10 21:40:02.926,0.002,0,181069,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,0,2026-06-10 21:40:02.927,0.001,0,181069,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,0,2026-06-10 21:40:02.929,0.002,0,180113,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,0,2026-06-10 21:40:13.602,10.572,13199,2650,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,0,2026-06-10 21:40:13.605,0.001,0,2,False,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,0,2026-06-10 21:40:13.608,10.679,0,2363,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,0,2026-06-10 21:40:13.611,0.002,0,3290,True,success,None,0.004
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,1,2026-06-10 21:40:13.612,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,1,2026-06-10 21:40:13.613,0.001,0,774,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,1,2026-06-10 21:40:22.160,8.548,0,9188,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,1,2026-06-10 21:40:22.166,0.005,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,1,2026-06-10 21:40:22.169,0.003,0,9188,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,1,2026-06-10 21:40:22.170,0.001,0,9188,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,1,2026-06-10 21:40:22.173,0.002,0,8134,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,1,2026-06-10 21:40:27.194,4.978,2662,1974,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,1,2026-06-10 21:40:27.196,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,1,2026-06-10 21:40:27.197,5.024,0,1689,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,1,2026-06-10 21:40:27.200,0.002,0,2449,True,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,2,2026-06-10 21:40:27.202,0.001,0,3290,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Combine & Send back to Loop,For Each Query...,0,2026-06-10 21:40:27.204,0.002,0,5753,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate Learnings,Set Initial Query,0,2026-06-10 21:40:27.245,50.879,0,5753,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Accumulate Results,Generate Learnings,0,2026-06-10 21:40:27.247,0.001,0,3245,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Depth Reached?,Accumulate Results,0,2026-06-10 21:40:27.249,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Results,Is Depth Reached?,0,2026-06-10 21:40:27.251,0.001,0,5753,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Results to Items,DeepResearch Results,0,2026-06-10 21:40:27.253,0.001,0,3290,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Set Next Queries,Results to Items,0,2026-06-10 21:40:27.255,0.003,0,3688,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Subworkflow,,0,2026-06-10 21:40:27.293,0.001,0,3755,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Execution Data,DeepResearch Subworkflow,0,2026-06-10 21:40:27.295,0.002,0,3755,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,JobType Router,Execution Data,0,2026-06-10 21:40:27.296,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model3,Generate SERP Queries,0,2026-06-10 21:40:33.227,5.915,1572,1860,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser2,Generate SERP Queries,0,2026-06-10 21:40:33.229,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate SERP Queries,JobType Router,0,2026-06-10 21:40:33.230,5.934,0,1559,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,SERP to Items,Generate SERP Queries,0,2026-06-10 21:40:33.231,0.001,0,728,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,SERP to Items,0,2026-06-10 21:40:33.232,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,0,2026-06-10 21:40:33.234,0.002,0,728,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,0,2026-06-10 21:40:46.686,13.452,0,992,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,0,2026-06-10 21:40:46.687,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,0,2026-06-10 21:40:46.689,0.001,0,992,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,0,2026-06-10 21:40:46.691,0.002,0,992,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,0,2026-06-10 21:40:46.692,0.001,0,103,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,0,2026-06-10 21:40:52.829,6.114,3035,1768,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,0,2026-06-10 21:40:52.831,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,0,2026-06-10 21:40:52.832,6.14,0,1483,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,0,2026-06-10 21:40:52.834,0.002,0,2346,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,1,2026-06-10 21:40:52.835,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,1,2026-06-10 21:40:52.835,0.001,0,802,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,1,2026-06-10 21:41:09.917,17.082,0,6936,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,1,2026-06-10 21:41:09.920,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,1,2026-06-10 21:41:09.922,0.001,0,6936,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,1,2026-06-10 21:41:09.927,0.005,0,6936,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,1,2026-06-10 21:41:09.929,0.002,0,5798,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,1,2026-06-10 21:41:17.603,7.541,14079,2737,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,1,2026-06-10 21:41:17.606,7.677,0,2450,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,1,2026-06-10 21:41:17.606,0.001,0,2,False,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,1,2026-06-10 21:41:17.611,0.004,0,3461,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,2,2026-06-10 21:41:17.612,0.001,0,2346,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Combine & Send back to Loop,For Each Query...,0,2026-06-10 21:41:17.613,0.001,0,5821,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Subworkflow,,0,2026-06-10 21:41:17.684,0.001,0,3747,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Execution Data,DeepResearch Subworkflow,0,2026-06-10 21:41:17.685,0.001,0,3747,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,JobType Router,Execution Data,0,2026-06-10 21:41:17.687,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model3,Generate SERP Queries,0,2026-06-10 21:41:27.518,9.82,1553,1742,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate SERP Queries,JobType Router,0,2026-06-10 21:41:27.520,9.833,0,1441,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser2,Generate SERP Queries,0,2026-06-10 21:41:27.520,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,SERP to Items,Generate SERP Queries,0,2026-06-10 21:41:27.521,0.001,0,718,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,SERP to Items,0,2026-06-10 21:41:27.521,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,0,2026-06-10 21:41:27.522,0.001,0,718,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,0,2026-06-10 21:41:40.896,13.375,0,1660,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,0,2026-06-10 21:41:40.897,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,0,2026-06-10 21:41:40.899,0.002,0,1660,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,0,2026-06-10 21:41:40.901,0.001,0,1660,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,0,2026-06-10 21:41:40.901,0.001,0,834,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,0,2026-06-10 21:41:47.496,6.574,4101,1868,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,0,2026-06-10 21:41:47.499,0.001,0,2,False,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,0,2026-06-10 21:41:47.499,6.598,0,1583,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,0,2026-06-10 21:41:47.500,0.001,0,2325,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Item Ref,For Each Query...,1,2026-06-10 21:41:47.501,0.001,0,694,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,1,2026-06-10 21:41:47.501,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,RAG Web Browser,Item Ref,1,2026-06-10 21:42:06.822,19.321,0,22075,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Apify Auth Error?,RAG Web Browser,1,2026-06-10 21:42:06.825,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Results,Is Apify Auth Error?,1,2026-06-10 21:42:06.826,0.001,0,22075,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Has Content?,Valid Results,1,2026-06-10 21:42:06.828,0.002,0,22075,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Markdown + URL,Has Content?,1,2026-06-10 21:42:06.829,0.001,0,21069,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model,DeepResearch Learnings,1,2026-06-10 21:42:15.338,8.467,11175,2569,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Structured Output Parser,DeepResearch Learnings,1,2026-06-10 21:42:15.340,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Learnings,Get Markdown + URL,1,2026-06-10 21:42:15.341,8.512,0,2282,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Research Goal + Learnings,DeepResearch Learnings,1,2026-06-10 21:42:15.343,0.001,0,3132,True,success,None,0.002
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Query...,Research Goal + Learnings,2,2026-06-10 21:42:15.344,0.001,0,2325,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Combine & Send back to Loop,For Each Query...,0,2026-06-10 21:42:15.344,0.001,0,5471,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate Learnings,Set Next Queries,1,2026-06-10 21:42:15.369,108.114,0,5821,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Accumulate Results,Generate Learnings,1,2026-06-10 21:42:15.370,0.001,0,9278,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Is Depth Reached?,Accumulate Results,1,2026-06-10 21:42:15.372,0.002,0,9278,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Research Results,Is Depth Reached?,0,2026-06-10 21:42:15.373,0.001,0,9257,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Generate Report,Get Research Results,0,2026-06-10 21:42:15.399,0.026,0,19397,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Subworkflow,,0,2026-06-10 21:42:15.407,0.001,0,10140,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Execution Data,DeepResearch Subworkflow,0,2026-06-10 21:42:15.409,0.001,0,10140,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,JobType Router,Execution Data,0,2026-06-10 21:42:15.409,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Get Existing Row1,JobType Router,0,2026-06-10 21:42:15.844,0.435,0,739,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model1,DeepResearch Report,0,2026-06-10 21:42:51.525,35.665,4464,15915,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,DeepResearch Report,Get Existing Row1,0,2026-06-10 21:42:51.528,35.684,0,15750,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Remove <think>ing blocks,DeepResearch Report,0,2026-06-10 21:42:51.623,0.095,0,15750,True,success,None,0.003
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Convert to HTML,Remove <think>ing blocks,0,2026-06-10 21:42:51.652,0.029,0,34031,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,HTML to Array,Convert to HTML,0,2026-06-10 21:42:51.653,0.001,0,16466,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Tags to Items,HTML to Array,0,2026-06-10 21:42:51.655,0.001,0,223,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,0,2026-06-10 21:42:53.855,2.188,998,3992,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,1,2026-06-10 21:42:56.211,2.347,951,3804,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,2,2026-06-10 21:42:58.798,2.577,1021,4084,False,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,3,2026-06-10 21:43:01.677,2.872,1068,4272,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,4,2026-06-10 21:43:02.875,1.191,953,3812,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,5,2026-06-10 21:43:04.893,2.009,943,3772,False,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,6,2026-06-10 21:43:09.411,4.511,959,3836,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,7,2026-06-10 21:43:10.988,1.569,959,3836,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,8,2026-06-10 21:43:12.376,1.38,960,3840,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,9,2026-06-10 21:43:14.120,1.733,969,3876,True,success,None,0.011
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,10,2026-06-10 21:43:15.613,1.486,950,3800,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,11,2026-06-10 21:43:17.053,1.433,964,3856,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,12,2026-06-10 21:43:18.642,1.582,955,3820,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,13,2026-06-10 21:43:20.301,1.65,960,3840,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,14,2026-06-10 21:43:21.632,1.324,943,3772,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,15,2026-06-10 21:43:23.544,1.906,937,3748,False,success,None,0.006
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,16,2026-06-10 21:43:25.509,1.956,953,3812,False,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,17,2026-06-10 21:43:26.957,1.442,955,3820,False,success,None,0.006
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,18,2026-06-10 21:43:28.793,1.819,953,3812,False,success,None,0.017
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,19,2026-06-10 21:43:30.758,1.959,957,3828,False,success,None,0.006
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,20,2026-06-10 21:43:32.483,1.719,961,3844,False,success,None,0.006
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,21,2026-06-10 21:43:33.983,1.494,955,3820,False,success,None,0.006
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,22,2026-06-10 21:43:36.102,2.105,968,3872,True,success,None,0.014
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,23,2026-06-10 21:43:37.929,1.822,953,3812,False,success,None,0.005
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,24,2026-06-10 21:43:39.679,1.745,978,3912,False,success,None,0.005
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,25,2026-06-10 21:43:46.211,6.525,1328,1926,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,26,2026-06-10 21:43:47.895,1.673,950,3800,True,success,None,0.011
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,27,2026-06-10 21:43:57.333,9.423,1579,3551,False,success,None,0.015
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,28,2026-06-10 21:43:58.650,1.308,958,3832,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,29,2026-06-10 21:44:00.396,1.736,998,3992,False,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,30,2026-06-10 21:44:01.936,1.531,967,3868,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,31,2026-06-10 21:44:03.759,1.815,955,3820,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,32,2026-06-10 21:44:05.350,1.582,951,3804,False,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,33,2026-06-10 21:44:06.651,1.294,952,3808,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,34,2026-06-10 21:44:11.199,4.539,1219,1439,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,35,2026-06-10 21:44:12.758,1.549,984,3936,True,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,36,2026-06-10 21:44:14.243,1.475,969,3876,True,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,37,2026-06-10 21:44:15.609,1.358,959,3836,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,38,2026-06-10 21:45:01.545,45.929,3291,12107,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,39,2026-06-10 21:45:03.138,1.584,975,3900,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,40,2026-06-10 21:45:08.947,5.802,1349,1841,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,41,2026-06-10 21:45:10.408,1.452,978,3912,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,42,2026-06-10 21:45:12.245,1.829,967,3868,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,43,2026-06-10 21:45:13.685,1.433,965,3860,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,44,2026-06-10 21:45:20.919,7.225,1491,2717,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,45,2026-06-10 21:45:22.568,1.641,966,3864,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,46,2026-06-10 21:45:28.336,5.76,1227,1520,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,47,2026-06-10 21:45:29.871,1.525,976,3904,True,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,48,2026-06-10 21:45:35.119,5.24,1170,1210,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,49,2026-06-10 21:45:36.736,1.61,964,3856,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,50,2026-06-10 21:45:41.427,4.684,1280,1763,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,51,2026-06-10 21:45:42.620,1.186,970,3880,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,52,2026-06-10 21:45:46.683,4.053,1149,1176,False,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,53,2026-06-10 21:45:48.092,1.402,964,3856,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,54,2026-06-10 21:45:51.556,3.455,1161,1211,False,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,55,2026-06-10 21:45:52.734,1.171,970,3880,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,56,2026-06-10 21:45:55.603,2.862,1157,1218,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,57,2026-06-10 21:45:56.746,1.136,958,3832,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,58,2026-06-10 21:45:58.146,1.393,962,3848,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,59,2026-06-10 21:46:12.694,14.54,2031,4868,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,60,2026-06-10 21:46:13.898,1.196,950,3800,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,61,2026-06-10 21:46:27.907,14.001,1918,5031,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,62,2026-06-10 21:46:29.508,1.593,970,3880,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,63,2026-06-10 21:46:31.140,1.625,954,3816,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,64,2026-06-10 21:46:40.813,9.662,1716,4060,True,success,None,0.011
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,65,2026-06-10 21:46:42.533,1.713,987,3948,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,66,2026-06-10 21:46:45.751,3.207,1171,1245,False,success,None,0.011
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,67,2026-06-10 21:46:47.011,1.251,965,3860,True,success,None,0.009
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,68,2026-06-10 21:46:49.951,2.933,956,3824,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,69,2026-06-10 21:47:07.371,17.413,2051,5816,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,70,2026-06-10 21:47:09.078,1.699,954,3816,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,71,2026-06-10 21:47:14.101,5.015,1315,1810,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,72,2026-06-10 21:47:15.372,1.263,968,3872,True,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,73,2026-06-10 21:47:24.757,9.375,1673,3187,True,success,None,0.01
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,74,2026-06-10 21:47:25.860,1.095,953,3812,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,75,2026-06-10 21:47:27.338,1.471,977,3908,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,76,2026-06-10 21:47:28.567,1.222,944,3776,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,77,2026-06-10 21:47:33.655,5.08,1347,1940,False,success,None,0.008
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,78,2026-06-10 21:47:35.061,1.399,991,3964,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,79,2026-06-10 21:47:36.295,1.227,965,3860,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,80,2026-06-10 21:47:46.350,10.048,1934,5132,True,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,OpenAI Chat Model5,Notion Block Generator,81,2026-06-10 21:47:48.113,1.756,997,3988,False,success,None,0.007
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Notion Block Generator,Tags to Items,0,2026-06-10 21:47:48.114,296.459,0,337,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Remove <think>ing blocks1,Notion Block Generator,0,2026-06-10 21:47:48.133,0.019,0,337,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Parse JSON blocks,Remove <think>ing blocks1,0,2026-06-10 21:47:48.159,0.026,0,231,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Valid Blocks,Parse JSON blocks,0,2026-06-10 21:47:48.173,0.013,0,231,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,URL Sources to Lists,Parse JSON blocks,0,2026-06-10 21:47:48.194,0.02,0,133,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Append Blocks,Valid Blocks,0,2026-06-10 21:47:48.196,0.002,0,231,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Append Blocks,0,2026-06-10 21:47:48.197,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,0,2026-06-10 21:47:48.723,0.526,0,1143,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,1,2026-06-10 21:47:48.724,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,1,2026-06-10 21:47:49.757,1.033,0,967,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,2,2026-06-10 21:47:49.758,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,2,2026-06-10 21:47:50.943,1.186,0,1146,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,3,2026-06-10 21:47:50.945,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,3,2026-06-10 21:47:52.435,1.491,0,1781,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,4,2026-06-10 21:47:52.436,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,4,2026-06-10 21:47:53.091,0.656,0,967,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,5,2026-06-10 21:47:53.092,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,5,2026-06-10 21:47:53.541,0.449,0,947,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,6,2026-06-10 21:47:53.542,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,6,2026-06-10 21:47:54.959,1.418,0,1007,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,7,2026-06-10 21:47:54.960,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,7,2026-06-10 21:47:55.597,0.637,0,1007,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,8,2026-06-10 21:47:55.598,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,8,2026-06-10 21:47:56.056,0.459,0,1019,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,9,2026-06-10 21:47:56.057,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,9,2026-06-10 21:47:56.974,0.918,0,1025,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,10,2026-06-10 21:47:56.975,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,10,2026-06-10 21:47:58.025,1.051,0,979,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,11,2026-06-10 21:47:58.027,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,11,2026-06-10 21:47:59.336,1.31,0,1013,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,12,2026-06-10 21:47:59.337,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,12,2026-06-10 21:48:00.017,0.681,0,987,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,13,2026-06-10 21:48:00.019,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,13,2026-06-10 21:48:00.518,0.5,0,997,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,14,2026-06-10 21:48:00.520,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,14,2026-06-10 21:48:01.794,1.275,0,943,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,15,2026-06-10 21:48:01.795,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,15,2026-06-10 21:48:02.561,0.766,0,925,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,16,2026-06-10 21:48:02.562,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,16,2026-06-10 21:48:03.045,0.484,0,963,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,17,2026-06-10 21:48:03.046,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,17,2026-06-10 21:48:03.536,0.49,0,958,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,18,2026-06-10 21:48:03.537,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,18,2026-06-10 21:48:04.370,0.834,0,950,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,19,2026-06-10 21:48:04.371,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,19,2026-06-10 21:48:05.820,1.45,0,956,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,20,2026-06-10 21:48:05.821,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,20,2026-06-10 21:48:06.730,0.91,0,992,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,21,2026-06-10 21:48:06.731,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,21,2026-06-10 21:48:07.241,0.51,0,980,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,22,2026-06-10 21:48:07.243,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,22,2026-06-10 21:48:07.776,0.534,0,1023,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,23,2026-06-10 21:48:07.777,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,23,2026-06-10 21:48:09.214,1.438,0,942,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,24,2026-06-10 21:48:09.216,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,24,2026-06-10 21:48:09.711,0.495,0,1193,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,25,2026-06-10 21:48:09.712,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,25,2026-06-10 21:48:10.239,0.527,0,3843,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,26,2026-06-10 21:48:10.240,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,26,2026-06-10 21:48:10.730,0.49,0,963,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,27,2026-06-10 21:48:10.731,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,27,2026-06-10 21:48:11.658,0.927,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,28,2026-06-10 21:48:11.659,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,28,2026-06-10 21:48:12.305,0.646,0,979,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,29,2026-06-10 21:48:12.306,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,29,2026-06-10 21:48:12.933,0.627,0,1337,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,30,2026-06-10 21:48:12.934,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,30,2026-06-10 21:48:13.924,0.989,0,1023,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,31,2026-06-10 21:48:13.925,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,31,2026-06-10 21:48:14.420,0.495,0,980,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,32,2026-06-10 21:48:14.422,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,32,2026-06-10 21:48:14.979,0.558,0,942,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,33,2026-06-10 21:48:14.981,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,33,2026-06-10 21:48:16.070,1.09,0,1025,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,34,2026-06-10 21:48:16.071,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,34,2026-06-10 21:48:16.584,0.513,0,3613,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,35,2026-06-10 21:48:16.585,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,35,2026-06-10 21:48:17.369,0.784,0,1189,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,36,2026-06-10 21:48:17.370,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,36,2026-06-10 21:48:18.048,0.678,0,1035,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,37,2026-06-10 21:48:18.050,0.002,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,37,2026-06-10 21:48:19.693,1.643,0,995,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,38,2026-06-10 21:48:19.694,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,38,2026-06-10 21:48:20.206,0.512,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,39,2026-06-10 21:48:20.207,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,39,2026-06-10 21:48:21.301,1.094,0,1047,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,40,2026-06-10 21:48:21.302,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,40,2026-06-10 21:48:22.181,0.878,0,4651,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,41,2026-06-10 21:48:22.183,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,41,2026-06-10 21:48:22.664,0.481,0,1041,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,42,2026-06-10 21:48:22.665,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,42,2026-06-10 21:48:23.737,1.072,0,1048,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,43,2026-06-10 21:48:23.738,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,43,2026-06-10 21:48:24.513,0.775,0,999,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,44,2026-06-10 21:48:24.514,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,44,2026-06-10 21:48:25.064,0.55,0,4312,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,45,2026-06-10 21:48:25.065,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,45,2026-06-10 21:48:26.263,1.198,0,1007,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,46,2026-06-10 21:48:26.264,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,46,2026-06-10 21:48:26.972,0.708,0,3346,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,47,2026-06-10 21:48:26.973,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,47,2026-06-10 21:48:27.893,0.921,0,1017,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,48,2026-06-10 21:48:27.894,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,48,2026-06-10 21:48:28.601,0.707,0,2921,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,49,2026-06-10 21:48:28.602,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,49,2026-06-10 21:48:29.368,0.766,0,1007,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,50,2026-06-10 21:48:29.369,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,50,2026-06-10 21:48:29.842,0.473,0,3662,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,51,2026-06-10 21:48:29.843,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,51,2026-06-10 21:48:30.869,1.027,0,1013,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,52,2026-06-10 21:48:30.870,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,52,2026-06-10 21:48:31.845,0.975,0,2853,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,53,2026-06-10 21:48:31.846,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,53,2026-06-10 21:48:34.924,3.078,0,995,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,54,2026-06-10 21:48:34.925,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,54,2026-06-10 21:48:35.815,0.89,0,2923,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,55,2026-06-10 21:48:35.816,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,55,2026-06-10 21:48:36.514,0.699,0,1019,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,56,2026-06-10 21:48:36.515,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,56,2026-06-10 21:48:37.025,0.51,0,2937,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,57,2026-06-10 21:48:37.026,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,57,2026-06-10 21:48:37.995,0.97,0,995,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,58,2026-06-10 21:48:37.996,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,58,2026-06-10 21:48:38.470,0.474,0,1015,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,59,2026-06-10 21:48:38.471,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,59,2026-06-10 21:48:39.177,0.706,0,13959,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,60,2026-06-10 21:48:39.178,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,60,2026-06-10 21:48:39.626,0.449,0,969,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,61,2026-06-10 21:48:39.627,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,61,2026-06-10 21:48:40.590,0.963,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,62,2026-06-10 21:48:40.591,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,62,2026-06-10 21:48:41.343,0.752,0,1029,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,63,2026-06-10 21:48:41.344,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,63,2026-06-10 21:48:41.775,0.431,0,1041,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,64,2026-06-10 21:48:41.776,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,64,2026-06-10 21:48:42.784,1.009,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,65,2026-06-10 21:48:42.785,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,65,2026-06-10 21:48:43.247,0.463,0,948,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,66,2026-06-10 21:48:43.248,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,66,2026-06-10 21:48:43.952,0.705,0,2991,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,67,2026-06-10 21:48:43.953,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,67,2026-06-10 21:48:44.437,0.485,0,1003,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,68,2026-06-10 21:48:44.438,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,68,2026-06-10 21:48:45.342,0.904,0,983,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,69,2026-06-10 21:48:45.343,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,69,2026-06-10 21:48:45.817,0.474,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,70,2026-06-10 21:48:45.818,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,70,2026-06-10 21:48:46.341,0.522,0,967,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,71,2026-06-10 21:48:46.342,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,71,2026-06-10 21:48:46.870,0.528,0,4589,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,72,2026-06-10 21:48:46.871,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,72,2026-06-10 21:48:47.628,0.757,0,1013,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,73,2026-06-10 21:48:47.629,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,73,2026-06-10 21:48:48.148,0.519,0,6491,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,74,2026-06-10 21:48:48.150,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,74,2026-06-10 21:48:48.763,0.614,0,961,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,75,2026-06-10 21:48:48.764,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,75,2026-06-10 21:48:49.266,0.502,0,1100,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,76,2026-06-10 21:48:49.267,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,76,2026-06-10 21:48:50.141,0.875,0,979,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,77,2026-06-10 21:48:50.142,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,77,2026-06-10 21:48:50.621,0.479,0,4849,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,78,2026-06-10 21:48:50.622,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,78,2026-06-10 21:48:51.360,0.738,0,1164,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,79,2026-06-10 21:48:51.361,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,79,2026-06-10 21:48:52.326,0.965,0,987,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,80,2026-06-10 21:48:52.327,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,80,2026-06-10 21:48:52.889,0.563,0,718,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,81,2026-06-10 21:48:52.890,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,81,2026-06-10 21:48:53.649,0.759,0,1208,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,82,2026-06-10 21:48:53.651,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,82,2026-06-10 21:48:54.554,0.903,0,947,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,83,2026-06-10 21:48:54.556,0.001,0,2,False,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Upload to Notion Page,For Each Block...,83,2026-06-10 21:48:55.269,0.714,0,11935,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,For Each Block...,Upload to Notion Page,84,2026-06-10 21:48:55.270,0.001,0,1143,True,success,None,0.001
+897,cwhfTav_bPOTurNRAh7Wz,cwhfTav_bPOTurNRAh7Wz,Set Done,For Each Block...,0,2026-06-10 21:48:55.953,0.683,0,802,True,success,None,0.001

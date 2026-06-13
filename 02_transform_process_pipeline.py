@@ -68,6 +68,62 @@ def contains_pii(text_content) -> bool:
     }
     return any(re.search(p, text_content) for p in patterns.values())
 
+# ---------------------------------------------------------------------------
+# Generic, framework-independent LLM token accounting.
+#
+# Instead of hard-coding a single JSON path (which breaks the moment a new LLM
+# family stores its counters under a different key), we recognize the small,
+# stable set of *key-name synonyms* that virtually every provider/framework
+# uses (OpenAI, LangChain chains, Anthropic, local models via LangChain, ...).
+# Key names are normalized to lowercase without underscores before matching.
+# ---------------------------------------------------------------------------
+TOKEN_TOTAL_KEYS = {"totaltokens"}                      # totalTokens, total_tokens
+TOKEN_PROMPT_KEYS = {"prompttokens", "inputtokens"}     # promptTokens, input_tokens, prompt_tokens
+TOKEN_COMPLETION_KEYS = {"completiontokens", "outputtokens"}  # completionTokens, output_tokens
+
+def _to_int(value) -> int:
+    """Safely coerces a token counter (int/float/numeric string) into an int."""
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return 0
+
+def find_token_usage(obj) -> int:
+    """
+    Recursively searches any nested structure for LLM token counters, independent
+    of the concrete JSON path or LLM framework. Matches a fixed set of synonym key
+    names rather than a fixed location. Prefers an explicit total; otherwise falls
+    back to prompt + completion. Uses max() across levels to avoid double counting
+    when the same usage block is reported at several nesting depths.
+    """
+    if isinstance(obj, dict):
+        total = 0
+        prompt = 0
+        completion = 0
+        for key, value in obj.items():
+            norm = str(key).lower().replace("_", "")
+            if norm in TOKEN_TOTAL_KEYS and isinstance(value, (int, float, str)):
+                total = max(total, _to_int(value))
+            elif norm in TOKEN_PROMPT_KEYS and isinstance(value, (int, float, str)):
+                prompt = max(prompt, _to_int(value))
+            elif norm in TOKEN_COMPLETION_KEYS and isinstance(value, (int, float, str)):
+                completion = max(completion, _to_int(value))
+            else:
+                nested = find_token_usage(value)
+                if nested > 0:
+                    total = max(total, nested)
+        if total > 0:
+            return total
+        if prompt or completion:
+            return prompt + completion
+        return 0
+    if isinstance(obj, list):
+        best = 0
+        for item in obj:
+            best = max(best, find_token_usage(item))
+        return best
+    return 0
+
 def extract_node_metrics(node_data: dict) -> tuple:
     """
     Unified extraction pass. Traverses the complex nested n8n JSON payload exactly once
@@ -75,32 +131,21 @@ def extract_node_metrics(node_data: dict) -> tuple:
     """
     if not isinstance(node_data, dict):
         return {}, 0, 0
-        
+
+    # 1. Generic, path-independent token search across the entire node payload.
+    #    Works for any LLM family because it keys off synonym names, not a fixed path.
+    tokens = find_token_usage(node_data)
+
     # Standard output channels where n8n registers node run executions
     target_keys = ['main', 'ai_languageModel', 'ai_tool', 'ai_memory']
     output_key = next((k for k in node_data.keys() if k in target_keys), None)
     if not output_key:
-        return {}, 0, 0
-        
+        return {}, tokens, 0
+
     try:
         execution_bucket = node_data[output_key][0][0]
         json_payload = execution_bucket.get('json', {})
-        
-        # 1. Parse Token Consumptions from varying LLM framework response structures
-        tokens = 0
-        if 'tokenUsageEstimate' in json_payload:
-            usage = json_payload['tokenUsageEstimate']
-            if isinstance(usage, dict): 
-                tokens = int(usage.get('totalTokens', 0))
-        elif 'response' in json_payload:
-            resp = json_payload['response']
-            if isinstance(resp, dict) and 'response_metadata' in resp:
-                meta = resp['response_metadata']
-                if isinstance(meta, dict) and 'tokenUsage' in meta:
-                    usage = meta['tokenUsage']
-                    if isinstance(usage, dict): 
-                        tokens = int(usage.get('totalTokens', 0))
-                        
+
         # 2. Compute cumulative binary file volumes
         binary_bytes = 0
         binary_dict = execution_bucket.get('binary', {})
@@ -108,10 +153,10 @@ def extract_node_metrics(node_data: dict) -> tuple:
             for file_meta in binary_dict.values():
                 if isinstance(file_meta, dict) and 'fileSize' in file_meta:
                     binary_bytes += parse_file_size(file_meta.get('fileSize'))
-                    
+
         return json_payload, tokens, binary_bytes
     except (IndexError, KeyError, TypeError):
-        return {}, 0, 0
+        return {}, tokens, 0
 
 def calculate_system_overhead(events: list) -> list:
     """Calculates chronological infrastructure latency between consecutive node executions."""
@@ -124,7 +169,66 @@ def calculate_system_overhead(events: list) -> list:
     events[0]['system_overhead_sec'] = 0.001
     return events
 
-def extract_events(execution_id, raw_api_data) -> list:
+def _extract_parent_id(raw_api_data):
+    """Returns the immediate parent execution id of a raw n8n trace, or None."""
+    try:
+        if isinstance(raw_api_data, str):
+            payload = json.loads(raw_api_data)
+            if isinstance(payload, str):
+                payload = json.loads(payload)
+        else:
+            payload = raw_api_data or {}
+        if isinstance(payload, dict):
+            parent = payload.get('parentExecution') or {}
+            if isinstance(parent, dict):
+                pid = parent.get('executionId')
+                return str(pid) if pid is not None else None
+    except Exception:
+        return None
+    return None
+
+def build_lineage_maps(engine) -> tuple:
+    """
+    In a single pass over the ENTIRE warehouse (not just the current delta), builds:
+      - parent_map      : {execution_id -> immediate_parent_execution_id}
+      - workflow_id_map : {execution_id -> workflow_id}
+
+    The parent map is required to resolve multi-level sub-workflow / self-call chains
+    back to their root execution, independent of recursion depth. The workflow_id map
+    lets us tag every event with the *root* workflow (the workflow in which the case
+    actually started), so a case that spans a main workflow plus its tool sub-workflows
+    is never torn apart when exporting per workflow.
+    """
+    parent_map = {}
+    workflow_id_map = {}
+    try:
+        for chunk in pd.read_sql('SELECT id, data, "workflowId" FROM raw_api_executions', engine, chunksize=200):
+            for _, row in chunk.iterrows():
+                exec_id = str(row['id'])
+                wf_id = row.get('workflowId')
+                if wf_id is not None:
+                    workflow_id_map[exec_id] = str(wf_id)
+                parent_id = _extract_parent_id(row.get('data'))
+                if parent_id:
+                    parent_map[exec_id] = parent_id
+    except Exception as e:
+        logger.warning(f"[TRANSFORMER] Could not build lineage maps (falling back to single-level stitching): {str(e)}")
+    return parent_map, workflow_id_map
+
+def resolve_root_case(execution_id, parent_map: dict) -> str:
+    """
+    Walks the parent chain upwards until the root execution (no further parent) is
+    reached, so every event of one logical run shares a single case_id regardless of
+    recursion depth. Includes a cycle guard to stay safe on malformed graphs.
+    """
+    current = str(execution_id)
+    seen = set()
+    while current in parent_map and current not in seen:
+        seen.add(current)
+        current = parent_map[current]
+    return current
+
+def extract_events(execution_id, raw_api_data, workflow_id=None, root_case_id=None, root_workflow_id=None) -> list:
     """Parses a standalone raw n8n execution trace into standardized process log entries."""
     try:
         if isinstance(raw_api_data, str):
@@ -137,9 +241,21 @@ def extract_events(execution_id, raw_api_data) -> list:
         if not isinstance(payload, dict):
             return []
 
-        # Maintain graph relationship across parent workflows and asynchronous sub-workflows
-        parent_id = payload.get('parentExecution', {}).get('executionId')
-        case_id = str(parent_id) if parent_id else str(execution_id)
+        # Maintain graph relationship across parent workflows and asynchronous sub-workflows.
+        # Prefer the pre-resolved ROOT case (collapses multi-level self-call chains into one
+        # case); fall back to single-level parent stitching if no map was provided.
+        if root_case_id is not None:
+            case_id = str(root_case_id)
+        else:
+            parent_id = payload.get('parentExecution', {}).get('executionId')
+            case_id = str(parent_id) if parent_id else str(execution_id)
+
+        # Workflow provenance: keep each workflow distinguishable so downstream event
+        # logs are never mixed across different workflows during Process Mining.
+        # 'workflow_id'      = the workflow that executed THIS node (may be a tool sub-workflow)
+        # 'root_workflow_id' = the workflow in which the whole case started (stable grouping key)
+        workflow_id = str(workflow_id) if workflow_id is not None else None
+        root_workflow_id = str(root_workflow_id) if root_workflow_id is not None else workflow_id
         
         run_data = payload.get('resultData', {}).get('runData', {})
         if not run_data:
@@ -176,6 +292,8 @@ def extract_events(execution_id, raw_api_data) -> list:
                 events.append({
                     "execution_id": execution_id,
                     "case_id": case_id,
+                    "workflow_id": workflow_id,
+                    "root_workflow_id": root_workflow_id,
                     "activity": activity,
                     "previous_activity": previous_node,
                     "execution_index": loop_idx, 
@@ -200,15 +318,36 @@ def run_transformation_pipeline():
     
     # LINE 1: Clean startup logging
     logger.info(f"[TRANSFORMER] Processing new records since execution ID {last_id}.")
-    
-    query = f'SELECT id, data FROM raw_api_executions WHERE CAST(id AS INTEGER) > {last_id} ORDER BY CAST(id AS INTEGER) ASC'
+
+    # Build the full execution->parent and execution->workflow maps once, so sub-workflow
+    # / self-call chains can be resolved to their root case AND tagged with the root workflow,
+    # even across delta loads.
+    parent_map, workflow_id_map = build_lineage_maps(engine)
+
+    query = f'SELECT id, data, "workflowId" FROM raw_api_executions WHERE CAST(id AS INTEGER) > {last_id} ORDER BY CAST(id AS INTEGER) ASC'
     total_new_events = 0
     
     try:
         for chunk in pd.read_sql(query, engine, chunksize=100):
             all_events = []
             for _, row in chunk.iterrows():
-                case_events = extract_events(row['id'], row.get('data', {}))
+                exec_id = str(row['id'])
+                root_case = resolve_root_case(exec_id, parent_map)
+
+                # Determine the ROOT workflow without mislabeling broken chains:
+                #  - root known in the warehouse -> use the root's workflow
+                #  - root is this execution itself -> genuine top-level run, use own workflow
+                #  - root points to a parent that is MISSING (referential gap) -> mark
+                #    'unresolved' instead of falsely attributing a sub-run (e.g. a tool)
+                #    to its own workflow id.
+                if root_case in workflow_id_map:
+                    root_wf = workflow_id_map[root_case]
+                elif root_case == exec_id:
+                    root_wf = row.get('workflowId')
+                else:
+                    root_wf = "unresolved"
+
+                case_events = extract_events(row['id'], row.get('data', {}), row.get('workflowId'), root_case, root_wf)
                 
                 if case_events:
                     # Injects network/engine delay variables across the sequential execution graph

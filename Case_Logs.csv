@@ -99,3 +99,4 @@ case_id,invoice_number,invoice_date,vendor,category,net_amount,tax_amount,total_
 866,67862112,2015-11-24,"Hawkins, Harris and Fletcher",Bürobedarf,771.9,77.19,849.09,Automatisch,True,True,42.45,806.64,True,False,0.95,2026-06-08 19:49:45.250,2026-06-08 19:50:02.404,17.154,4106,28,0,True
 868,57234291,2019-08-14,"Sims, Combs and Ross",Bücher,106.36,10.64,117.0,Automatisch,True,True,5.85,111.15,True,False,0.95,2026-06-08 20:06:56.124,2026-06-08 20:07:22.594,26.47,3809,28,0,True
 870,81402084,2020-01-20,Scott Group,Bürobedarf,84.96,8.5,93.46,Automatisch,True,True,4.67,88.79,True,False,0.95,2026-06-08 20:07:25.132,2026-06-08 20:07:41.594,16.462,3500,28,0,True
+897,,,,,,,,Unknown,False,False,0.0,,False,False,,2026-06-10 21:38:10.300,2026-06-10 21:48:55.953,645.653,149681,400,0,True

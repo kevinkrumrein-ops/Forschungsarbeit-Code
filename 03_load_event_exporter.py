@@ -6,13 +6,20 @@ Prepares the final dataset for seamless, real-time ingestion into Celonis EMS.
 
 The mandatory activity table is always exported. A case table is exported in addition
 if an optional workflow-specific case builder has populated 'process_mining_cases'.
+
+Set EXPORT_SPLIT_BY_WORKFLOW=true to materialize one activity file per *root* workflow
+(recommended for Celonis, which treats one activity table as exactly one process). The
+split uses 'root_workflow_id' so a case that spans a main workflow plus its tool
+sub-workflows stays intact in a single file. Files are named after the workflow name.
 """
 
 import os
+import re
 import sys
+import json
 import logging
 import pandas as pd
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine, inspect, text
 from dotenv import load_dotenv
 
 # Uniform logging configuration matching the pipeline architecture
@@ -30,8 +37,46 @@ def get_target_engine():
     db = os.getenv('TARGET_DB_NAME')
     return create_engine(f"postgresql://{user}:{pw}@{host}:{port}/{db}")
 
+def _sanitize_filename(name: str) -> str:
+    """Turns an arbitrary workflow name into a safe filename fragment."""
+    safe = re.sub(r'[^0-9A-Za-z._-]+', '_', str(name)).strip('_')
+    return safe or 'workflow'
+
+def resolve_workflow_names(engine, workflow_ids) -> dict:
+    """
+    Looks up the human-readable workflow name for each (stable) workflow_id by reading
+    one raw execution per workflow. Defensive: any id that cannot be resolved keeps its
+    raw id as the fallback name, so the export never fails on a missing/odd record.
+    """
+    names = {}
+    for wid in workflow_ids:
+        fallback = _sanitize_filename(wid)
+        try:
+            df = pd.read_sql(
+                text('SELECT "workflowData" AS wd FROM raw_api_executions WHERE "workflowId" = :wid LIMIT 1'),
+                engine, params={"wid": wid}
+            )
+            if df.empty:
+                names[wid] = fallback
+                continue
+            wd = df.iloc[0]['wd']
+            if isinstance(wd, str):
+                wd = json.loads(wd)
+            name = wd.get('name') if isinstance(wd, dict) else None
+            names[wid] = _sanitize_filename(name) if name else fallback
+        except Exception:
+            names[wid] = fallback
+    return names
+
 def export_event_log(engine, output_file: str) -> int:
-    """Materializes the mandatory activity table into a Celonis-ready CSV."""
+    """Materializes the mandatory activity table into a Celonis-ready CSV.
+
+    By default everything is written to a single file (with 'workflow_id' and
+    'root_workflow_id' columns so workflows stay distinguishable). If
+    EXPORT_SPLIT_BY_WORKFLOW is enabled, one file per root workflow is written instead,
+    named after the workflow. No interactive input is required - the split is driven
+    purely by the root_workflow_id already present in the data.
+    """
     # Retrieve data using strict process mining sorting constraints (Case ID & Chronological order)
     query = "SELECT * FROM process_mining_events ORDER BY case_id, end_timestamp ASC"
     df = pd.read_sql(query, engine)
@@ -44,13 +89,47 @@ def export_event_log(engine, output_file: str) -> int:
     df['timestamp'] = df['end_timestamp']
 
     target_columns = [
-        'case_id', 'activity', 'previous_activity', 'execution_index',
-        'timestamp', 'execution_time_sec', 'token_usage', 'data_volume_bytes',
-        'pii_detected', 'execution_status', 'error_type', 'system_overhead_sec'
+        'case_id', 'workflow_id', 'root_workflow_id', 'activity', 'previous_activity',
+        'execution_index', 'timestamp', 'execution_time_sec', 'token_usage',
+        'data_volume_bytes', 'pii_detected', 'execution_status', 'error_type', 'system_overhead_sec'
     ]
     existing_columns = [col for col in target_columns if col in df.columns]
     df_export = df[existing_columns]
 
+    # Optional: one activity file per ROOT workflow so Celonis builds separate process
+    # models, while keeping each case (incl. its tool sub-workflows) whole.
+    split_by_workflow = os.getenv("EXPORT_SPLIT_BY_WORKFLOW", "false").strip().lower() in ("1", "true", "yes")
+    if split_by_workflow and 'root_workflow_id' in df_export.columns:
+        base, ext = os.path.splitext(output_file)
+        ext = ext or ".csv"
+
+        # 'unresolved' is a sentinel for sub-runs whose parent execution is missing from
+        # the warehouse (referential gap). It is NOT a real workflow, so we never look it
+        # up by name - it gets its own clearly flagged file so gaps surface immediately.
+        real_ids = [w for w in df_export['root_workflow_id'].dropna().unique().tolist() if w != "unresolved"]
+        name_map = resolve_workflow_names(engine, real_ids)
+
+        used_names = {}
+        total_rows = 0
+        for wf_id, group in df_export.groupby('root_workflow_id', dropna=False):
+            if pd.isna(wf_id) or wf_id == "unresolved":
+                wf_name = "UNRESOLVED_referential_gap"
+            else:
+                wf_name = name_map.get(wf_id, _sanitize_filename(wf_id))
+                # Guard against two different workflows sharing the same name
+                if wf_name in used_names and used_names[wf_name] != wf_id:
+                    wf_name = f"{wf_name}_{_sanitize_filename(wf_id)}"
+                used_names[wf_name] = wf_id
+
+            wf_file = f"{base}_{wf_name}{ext}"
+            group.to_csv(wf_file, index=False, encoding='utf-8', sep=',')
+            level = "WARNING" if wf_name.startswith("UNRESOLVED") else "INFO"
+            logger.log(getattr(logging, level),
+                       f"[EXPORTER] Wrote {len(group)} events for '{wf_name}' to '{wf_file}'.")
+            total_rows += len(group)
+        return total_rows
+
+    # Materialize the structured dataset to disk (single file)
     df_export.to_csv(output_file, index=False, encoding='utf-8', sep=',')
     return len(df_export)
 
