@@ -77,3 +77,11 @@ case_id,workflow_id,root_workflow_id,activity,previous_activity,execution_index,
 885,cwhfTav_bPOTurNRAh7Wz,unresolved,Is Depth Reached?,Accumulate Results,1,2026-06-10 16:27:23.382,0.001,0,9701,True,success,None,0.001
 885,cwhfTav_bPOTurNRAh7Wz,unresolved,Get Research Results,Is Depth Reached?,0,2026-06-10 16:27:23.388,0.007,0,9680,True,success,None,0.001
 885,cwhfTav_bPOTurNRAh7Wz,unresolved,Generate Report,Get Research Results,0,2026-06-10 16:27:23.424,0.035,0,20368,True,success,None,0.001
+903,OHye6pAWrl57JnX7di6h6,unresolved,When Executed by Another Workflow,,0,2026-06-12 17:25:16.985,0.001,0,62,False,success,None,0.001
+903,OHye6pAWrl57JnX7di6h6,unresolved,Download file,When Executed by Another Workflow,0,2026-06-12 17:25:18.250,1.265,0,15360,False,success,None,0.001
+903,OHye6pAWrl57JnX7di6h6,unresolved,Extract from File,Download file,0,2026-06-12 17:25:18.301,0.05,0,796,True,success,None,0.001
+903,OHye6pAWrl57JnX7di6h6,unresolved,Extract PDF Text,Extract from File,0,2026-06-12 17:25:18.395,0.094,0,423,True,success,None,0.001
+905,OHye6pAWrl57JnX7di6h6,unresolved,When Executed by Another Workflow,,0,2026-06-12 17:26:30.150,0.001,0,62,False,success,None,0.001
+905,OHye6pAWrl57JnX7di6h6,unresolved,Download file,When Executed by Another Workflow,0,2026-06-12 17:26:34.501,4.351,0,15360,False,success,None,0.001
+905,OHye6pAWrl57JnX7di6h6,unresolved,Extract from File,Download file,0,2026-06-12 17:26:34.511,0.01,0,796,True,success,None,0.001
+905,OHye6pAWrl57JnX7di6h6,unresolved,Extract PDF Text,Extract from File,0,2026-06-12 17:26:34.529,0.018,0,423,True,success,None,0.001
