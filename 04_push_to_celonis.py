@@ -107,8 +107,10 @@ def _get_or_add_table(model, table_name: str):
 
 def configure_data_model(data_pool, model_name: str, event_table: str, case_table):
     """Add the workflow's tables to its data model, link them 1:N on case_id, and set
-    the process configuration. Idempotent: a model already wired from a prior run is
-    left untouched. Any modelling-API error is logged as one line, not fatal.
+    the process configuration. The keys and process configuration are wired only on
+    first setup; the data model is then reloaded on every run so the freshly replaced
+    pool tables propagate into the model. Any modelling-API error is logged as one
+    line, not fatal.
     """
     try:
         model = get_or_create_data_model(data_pool, model_name)
@@ -116,30 +118,30 @@ def configure_data_model(data_pool, model_name: str, event_table: str, case_tabl
         ev_tbl, ev_new = _get_or_add_table(model, event_table)
         ca_tbl, ca_new = _get_or_add_table(model, case_table) if case_table else (None, False)
 
-        # If both tables already existed in the model, it was wired on a previous run.
-        # The pool tables were replaced in place, so the existing keys/config still hold.
-        if not (ev_new or ca_new):
-            logger.info(f"Data model '{model_name}' already configured")
-            return
+        # Wire keys and process configuration only on first setup. The pool tables are replaced in place, so the existing keys/config stay valid on later runs.
+        if ev_new or ca_new:
+            if ca_tbl is not None:
+                # 1:N foreign key on case_id (case = "1" side, event = "N" side).
+                model.create_foreign_key(
+                    source_table_id=ca_tbl.id,
+                    target_table_id=ev_tbl.id,
+                    columns=[(CASE_ID_COLUMN, CASE_ID_COLUMN)],
+                )
 
-        if ca_tbl is not None:
-            # 1:N foreign key on case_id (case = "1" side, event = "N" side).
-            model.create_foreign_key(
-                source_table_id=ca_tbl.id,
-                target_table_id=ev_tbl.id,
-                columns=[(CASE_ID_COLUMN, CASE_ID_COLUMN)],
+            model.create_process_configuration(
+                activity_table_id=ev_tbl.id,
+                case_id_column=CASE_ID_COLUMN,
+                activity_column=ACTIVITY_COLUMN,
+                timestamp_column=TIMESTAMP_COLUMN,
+                case_table_id=(ca_tbl.id if ca_tbl is not None else None),
             )
+            logger.info(f"Data model '{model_name}' configured (1:N on {CASE_ID_COLUMN})")
+        else:
+            logger.info(f"Data model '{model_name}' already configured")
 
-        model.create_process_configuration(
-            activity_table_id=ev_tbl.id,
-            case_id_column=CASE_ID_COLUMN,
-            activity_column=ACTIVITY_COLUMN,
-            timestamp_column=TIMESTAMP_COLUMN,
-            case_table_id=(ca_tbl.id if ca_tbl is not None else None),
-        )
-
+        # Always reload so the replaced pool tables become effective in the model.
         model.reload(wait=True)
-        logger.info(f"Data model '{model_name}' configured (1:N on {CASE_ID_COLUMN})")
+        logger.info(f"Data model '{model_name}' reloaded")
     except Exception as e:
         logger.warning(f"Tables for '{model_name}' uploaded, but data-model setup failed: {_short_error(e)}")
 

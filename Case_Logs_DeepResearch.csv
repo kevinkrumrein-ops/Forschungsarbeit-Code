@@ -1,9 +1,0 @@
-case_id,root_workflow_id,workflow_name,start_time,end_time,throughput_sec,total_tokens,activity_count,error_count,pii_in_case,breadth,depth,notion_name,research_query
-897,cwhfTav_bPOTurNRAh7Wz,DeepResearch,2026-06-10 21:38:10.300,2026-06-10 21:48:55.953,645.653,149681,400,0,True,,,,
-914,cwhfTav_bPOTurNRAh7Wz,DeepResearch,2026-06-12 19:17:55.073,2026-06-12 19:25:52.872,477.799,150994,344,0,True,2,1,,
-920,cwhfTav_bPOTurNRAh7Wz,DeepResearch,2026-06-12 19:45:38.999,2026-06-12 19:55:50.541,611.542,166403,344,0,True,2,1,Evaluating External Process Mining Tools for Workflow Analysis in Low-Code Platforms,"Initial query: Process-Mining for Low-Code Plattforms
-Follow-up Questions and Answers:
-question: Are you focusing on integrating process mining capabilities directly within existing low-code platforms or evaluating external process mining tools for use alongside these platforms?
-answer: evaluating external process mining tools for use alongside these platforms
-question: What specific types of processes or workflows within low-code platforms are you interested in analyzing and optimizing through process mini"
-926,cwhfTav_bPOTurNRAh7Wz,DeepResearch,2026-06-13 10:14:42.934,2026-06-13 10:15:27.888,44.954,1331,19,0,True,,,,
